@@ -6,6 +6,7 @@ export const S_container = styled.div`
    `
 export const S_headerCurrently = styled.div`
     background-color: #286661; 
+    border-radius: 10px;
     width: 800px;
     height: 170 px;
     margin-left: 165px;
@@ -45,9 +46,19 @@ export const S_contentCurrently = styled.div`
                     font-size: 60px;
                     color: #fff;
                 }
+               
+        }
+        .time{
+            font-size: 20px;
+
         }
         .content_bonus{
-            
+            .tempMin,.tempMax{
+                    font-size: 20px;
+                } 
+                .tempMax{
+                    
+                }
         }
     }
     .header_img{

@@ -26,8 +26,8 @@ const Header = ({inforWeather,setInforWeather}) => {
       apiFetch()
       setnameLocal('')
     },[])
-    
     const apiFetch = async()=>{
+
         try {
             let response = await fetch(`${keyApi_currentday}`);
             let  inforWeathers = await response.json(); //toàn bộ thông tin thời tiết ngày đang nhập xc n
@@ -36,6 +36,9 @@ const Header = ({inforWeather,setInforWeather}) => {
           if(inforWeathers.name){ // nếu tồn tại tên thành phố khi call thì mới thêm vào local
 
             const local = localStorage.getItem('locations') ? JSON.parse(localStorage.getItem('locations')):[]
+            if(local.length>5){
+              local.pop()
+            }
             localStorage.setItem('locations',JSON.stringify([...local,nameLocal]))
           }
 
@@ -77,6 +80,7 @@ const Header = ({inforWeather,setInforWeather}) => {
                 <Link to="">SIGN UP</Link> {/* chỗ này để điền link */}
             </div>
         </S_head_User>
+      
     </S_Header>
 
   )
