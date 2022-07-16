@@ -21,6 +21,7 @@ const Nav = () => {
       </div>
     
     </S_Navigate>
+    
   )
 }
 
