@@ -36,6 +36,9 @@ const App = () => {
         country: data.results[0].components.country,
       })
     })
+    .catch(error => {
+      alert('Something went wrong')
+    })
   }
   function onError(error) {
     if (error.code == 1) {
