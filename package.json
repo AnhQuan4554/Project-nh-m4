@@ -7,12 +7,10 @@
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
     "firebase": "^9.9.0",
-<<<<<<< HEAD
+    "google": "^2.1.0",
     "i": "^0.3.7",
-    "npm": "^8.14.0",
-=======
     "moment": "^2.29.4",
->>>>>>> 34cf778359fdad7f88523d67b17382345057b396
+    "npm": "^8.14.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.4.0",
