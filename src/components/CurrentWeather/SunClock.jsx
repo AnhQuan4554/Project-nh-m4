@@ -6,12 +6,12 @@ import { HiSun } from "react-icons/hi";
 const SunClock = ({ sunrise, sunset, currentTime }) => {
   const time = sunset - sunrise;
   const anglePerMinute = 180 / time;
-  const now = currentTime ? currentTime - sunrise : 0;
+  const now = (currentTime <= sunset ? currentTime : sunset) - sunrise;
   const angle = anglePerMinute * now;
   const cx = 50 * Math.cos((angle * Math.PI) / 180);
   const cy = Math.sqrt(50 * 50 - cx * cx);
 
-  // console.log(Math.cos(angle), angle);
+  console.log(currentTime + "cT ");
 
   return (
     <S_SunClock angle={angle} cx={cx} cy={cy}>

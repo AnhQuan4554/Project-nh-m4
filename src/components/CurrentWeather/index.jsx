@@ -6,15 +6,29 @@ import SunClock from "./SunClock";
 import SunTime from "./SunTime";
 
 import { GiSunbeams, GiWindSlap } from "react-icons/gi";
-import { FaTemperatureHigh } from "react-icons/fa";
+import { FaMonument, FaTemperatureHigh } from "react-icons/fa";
 import { MdWaterDrop, MdCompress, MdVisibility } from "react-icons/md";
 import { TbWind } from "react-icons/tb";
+import moment from "moment"; // thư viện đổi giờ sunrise sunset
 
-const CurrentWeather = () => {
-  const location = "Thành phố Hồ Chí Minh";
-  const temperature = 35;
-  const sunriseTime = "5:37";
-  const sunsetTime = "18:20";
+const CurrentWeather = ({ inforWeather }) => {
+  const location = inforWeather && inforWeather.name && inforWeather.name;
+  const temperature =
+    inforWeather && inforWeather.main && inforWeather.main.temp;
+  // Number(inforWeather.main.temp - 280).toFixed(1);
+
+  const sunriseTime =
+    inforWeather && inforWeather.sys && inforWeather.sys.sunrise;
+
+  const sunsetTime =
+    inforWeather &&
+    inforWeather.sys &&
+    moment(inforWeather.sys.sunset).format("LT");
+
+  const nowTime = new Date();
+  const nowHour = nowTime.getHours();
+  const nowMinute = nowTime.getMinutes();
+  const currentTime = nowHour * 60 + nowMinute;
 
   return (
     <S_CurrentWeather>
@@ -25,7 +39,11 @@ const CurrentWeather = () => {
           <p>{temperature}&deg;</p>
         </div>
         <div className="today-weather__suntime">
-          <SunClock sunrise={360} sunset={1080} currentTime={720}/>
+          <SunClock
+            sunrise={360}
+            sunset={1080}
+            currentTime={currentTime}
+          />
           <SunTime sunriseTime={sunriseTime} sunsetTime={sunsetTime} />
         </div>
       </div>
@@ -65,6 +83,7 @@ const CurrentWeather = () => {
 export default CurrentWeather;
 
 const S_CurrentWeather = styled.section`
+  margin-top: 14px;
   width: 100%;
   padding: 16px 0;
   background-color: #fff;

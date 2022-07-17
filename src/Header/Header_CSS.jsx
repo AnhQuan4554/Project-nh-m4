@@ -94,15 +94,26 @@ export const S_Navigate = styled.div`
 `
 export const S_suggest= styled.ul`
     width: 370px;
-    max-height: 240px;
-    background-color: #d1c7c7;
+    background-color: #fff;
     position: absolute;
     top: 100%;
     left: 0;
     overflow: hidden;
+    border-radius: 10px;
     z-index: 10;
     li{
+        padding: 10px 35px;
+        margin-bottom:5px ;
         list-style: none;
+        color: #000;
+        border-bottom: 1px solid #888;
+        &:hover{
+            background-color: #d7b7b7;
+            cursor: pointer;
+        }
+        &:last-child{
+            border: none;
+        }
     }
 
 `

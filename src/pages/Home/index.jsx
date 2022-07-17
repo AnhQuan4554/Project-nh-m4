@@ -3,11 +3,16 @@ import React from "react";
 import BodySection from "../../components/BodySection";
 import CurrentWeather from "../../components/CurrentWeather";
 import HourlyForecast from "../../components/HourlyForecast";
+import Currently_day from "../../Currently_day/Currently_day";
 
-const Home = () => {
+const Home = ({ inforWeather }) => {
   return (
     <BodySection
-      mainContent={[<CurrentWeather />, <HourlyForecast />]}
+      mainContent={[
+        <Currently_day inforWeather={inforWeather} />,
+        <CurrentWeather inforWeather={inforWeather} />,
+        <HourlyForecast inforWeather={inforWeather} />,
+      ]}
     />
   );
 };
