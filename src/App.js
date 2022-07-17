@@ -4,7 +4,6 @@ import Home from "./pages/Home";
 import HourlyWeather from "./pages/HourlyWeather";
 
 function App() {
-  console.log("Khoi commit");
   return (
     <BrowserRouter>
       <Routes>
@@ -15,4 +14,4 @@ function App() {
   );
 }
 
-export default App;
+export default App
