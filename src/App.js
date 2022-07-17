@@ -1,17 +1,20 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-
+import React, { useState } from "react";
+import { Routes, Route } from "react-router-dom";
+import Header from "./Header/Header";
 import Home from "./pages/Home";
 import HourlyWeather from "./pages/HourlyWeather";
 
-function App() {
+const App = () => {
+  const [inforWeather, setInforWeather] = useState(null);
   return (
-    <BrowserRouter>
+    <>
+      {/* <Header /> */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/hourly" element={<HourlyWeather />} />
       </Routes>
-    </BrowserRouter>
+    </>
   );
-}
+};
 
-export default App
+export default App;

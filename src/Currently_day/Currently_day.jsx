@@ -3,12 +3,12 @@ import styled from 'styled-components'
 import { TbTemperatureCelsius } from 'react-icons/tb';
 import {S_headerCurrently,S_container,S_location,S_contentCurrently} from './Currently_CSS'
 const Currently_day = ({inforWeather}) => {
-  // console.log(inforWeather,'ở curenday')
-  const temp =inforWeather&& Number(inforWeather.main.temp-280).toFixed(1)
-  const tempMin =inforWeather&& Number(inforWeather.main.temp_min-280).toFixed(1)
-  const tempMax = inforWeather&& Number(inforWeather.main.temp_max-280).toFixed(1)
-  const icon = inforWeather&&  inforWeather.weather[0].icon
-  console.log(icon)
+  console.log(inforWeather,'ở curenday')
+  const temp =inforWeather && inforWeather.main && Number(inforWeather.main.temp-280).toFixed(1)
+  const tempMin =inforWeather && inforWeather.main  && Number(inforWeather.main.temp_min-280).toFixed(1)
+  const tempMax = inforWeather && inforWeather.main && Number(inforWeather.main.temp_max-280).toFixed(1)
+  const icon = inforWeather && inforWeather.main &&  inforWeather.weather[0].icon
+  if(!temp && ! tempMin && !tempMax && !icon)return <h1>NO DATA</h1>
   return (
   
     <S_container >
