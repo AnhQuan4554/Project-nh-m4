@@ -7,7 +7,7 @@ import Button from "../Button";
 
 const HourlyForecast = () => {
   return (
-    <S_HourlyForecast>
+    <S_HourlyForecast key="HourlyForecast">
       <h2 className="title">Dự báo mỗi 3 giờ</h2>
       <ul className="card-list">
         <HourlyForecastCard time="Bây giờ" currentTime={true} />
