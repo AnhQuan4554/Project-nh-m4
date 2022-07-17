@@ -5,11 +5,11 @@ import BodySection from "../../components/BodySection";
 import CurrentWeather from "../../components/CurrentWeather";
 import HourlyForecast from "../../components/HourlyForecast";
 
-const Home = () => {
+const Home = ({inforWeather}) => {
   return (
     <BodySection
-      mainContent={[<CurrentWeather />, <HourlyForecast />]}
-      rightContent={[<AirQuality />]}
+      mainContent={[<CurrentWeather inforWeather={inforWeather} />, <HourlyForecast />]}
+      rightContent={[<AirQuality />]} // bao giờ cho lịch vào cái này 
     />
   );
 };

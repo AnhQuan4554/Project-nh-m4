@@ -6,16 +6,15 @@ import SunClock from "./SunClock";
 import SunTime from "./SunTime";
 
 import { GiSunbeams, GiWindSlap } from "react-icons/gi";
-import { FaTemperatureHigh } from "react-icons/fa";
+import { FaMonument, FaTemperatureHigh } from "react-icons/fa";
 import { MdWaterDrop, MdCompress, MdVisibility } from "react-icons/md";
 import { TbWind } from "react-icons/tb";
-
-const CurrentWeather = () => {
-  const location = "Thành phố Hồ Chí Minh";
-  const temperature = 35;
-  const sunriseTime = "5:37";
-  const sunsetTime = "18:20";
-
+import moment from 'moment';// thư viện đổi giờ sunrise sunset
+const CurrentWeather = ({inforWeather}) => {
+  const location = inforWeather && inforWeather.name && inforWeather.name;
+  const temperature = inforWeather && inforWeather.main && Number(inforWeather.main.temp-280).toFixed(1)
+  const sunriseTime = inforWeather && inforWeather.sys  && inforWeather.sys.sunrise
+  const sunsetTime = inforWeather && inforWeather.sys  && moment(inforWeather.sys.sunset).format("LT")
   return (
     <S_CurrentWeather>
       <h2 className="today-weather__title">Thời tiết hôm nay tại {location}</h2>
