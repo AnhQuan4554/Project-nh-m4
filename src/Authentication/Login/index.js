@@ -13,7 +13,6 @@ const Login = () => {
         email: '',
         password: '',
     })
-  
     const handleInput = (event) => {
         let newInput = {[event.target.name]: event.target.value}
         setData({...data, ...newInput})

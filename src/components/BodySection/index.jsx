@@ -4,7 +4,7 @@ import styled from "styled-components";
 const BodySection = ({ rightContent = [], mainContent }) => {
   return (
     <S_BodySection>
-      <div className="main__content">{mainContent.map((item) => item)}</div>
+      <div className="main__content">{mainContent.map((item,index) => <div key={index}>{item}</div>)}</div>
       {/* bỏ đi thay thế cái này bằng lịch */}
       {/* <div className="right__content">{rightContent.map((item) => item)}</div> */}
     </S_BodySection>

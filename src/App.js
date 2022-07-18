@@ -3,6 +3,8 @@ import { Navigate } from 'react-router-dom'
 import Currently_day from './Currently_day/Currently_day'
 import Header from './Header/Header'
 import Nav from './Header/Nav'
+import Login from './Authentication/Login'// đăng nhập
+import Signup from './Authentication/Signup'// đăng kí
 import {
   BrowserRouter,
   Routes,
@@ -16,6 +18,8 @@ const App = () => {
     city: '',
     country: '',
   })
+  console.log(currentLocation,'biến đây mà')
+  currentLocation.city&& console.log('có thành phố rồi nhé ',currentLocation.city)
   useEffect(() => {
     if (navigator.geolocation) { //check if geolocation is available
       navigator.geolocation.getCurrentPosition(onSuccess, onError);
@@ -29,8 +33,8 @@ const App = () => {
     // convert latitude and longitude to address
     .then(response => response.json())
     .then(data => {
-      console.log(data.results[0].components.city);
-      console.log(data.results[0].components.country);
+      // console.log(data.results[0].components.city,);
+      // console.log(data.results[0].components.country);
       setCurrentLocation({
         city: data.results[0].components.city,
         country: data.results[0].components.country,
@@ -53,17 +57,23 @@ const App = () => {
   const [inforWeather, setInforWeather] = useState(null)
   return (
     <div>
-        <Header inforWeather={inforWeather} // quân
+      <Login/>
+{/*      
+        <Header inforWeather={inforWeather} 
           setInforWeather = {setInforWeather}
         />
-        <Nav/> {/* Quân */}
+        <Nav/> 
         <Currently_day inforWeather={inforWeather}/>
-        {/*  */}
-        <Home inforWeather={inforWeather}/>  {/* Sẽ chứa nội dung chính và Lịch */}
-        <Routes>
-       {/*  <Route path="/" element={<Home/>} />  */}{/*  Khôi */}
-        {/* <Route path="/hourly" element={<HourlyWeather />} />Khôi */}
-      </Routes>
+        
+        <Home inforWeather={inforWeather}/> */}
+        
+        {/* <Routes>
+
+
+        <Route path="/Login" element={<Login />} />
+        <Route path="/Signup" element={<Signup />} />
+      </Routes> */}
+
     </div> 
   )
 }
