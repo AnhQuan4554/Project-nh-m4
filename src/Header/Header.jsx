@@ -36,8 +36,8 @@ const Header = ({inforWeather,setInforWeather}) => {
           if(inforWeathers.name){ // nếu tồn tại tên thành phố khi call thì mới thêm vào local
 
             const local = localStorage.getItem('locations') ? JSON.parse(localStorage.getItem('locations')):[]
-            if(local.length>5){
-              local.pop()
+            if(local.length>4){
+              local.shift()
             }
             localStorage.setItem('locations',JSON.stringify([...local,nameLocal]))
           }

@@ -29,7 +29,7 @@ const Input_search = ({setnameLocal,nameLocal,apiFetch,inforWeather}) => {
           onKeyDown = {(e)=>(keyEnter(e.key))}
           value = {nameLocal}
           type="text" placeholder='Tỉnh thành phố ' />
-          {showSuggest?<Input_suggest apiFetch={apiFetch} setnameLocal={setnameLocal} nameLocal={nameLocal}  setShowSuggest={setShowSuggest}/>:''}
+          {showSuggest?<Input_suggest apiFetch={apiFetch} nameLocal={nameLocal} setnameLocal={setnameLocal} setShowSuggest={setShowSuggest}  />:''}
     </div>
   )
 }

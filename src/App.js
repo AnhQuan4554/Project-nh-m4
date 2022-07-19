@@ -3,36 +3,38 @@ import { Navigate } from 'react-router-dom'
 import Currently_day from './Currently_day/Currently_day'
 import Header from './Header/Header'
 import Nav from './Header/Nav'
-import logo from './logo.svg';
+
 import './App.css';
 import {
   BrowserRouter,
   Routes,
   Route,Link
 } from "react-router-dom";
+
+import Home from './pages/Home/index'
+import HourlyWeather from './pages/HourlyWeather'
 const App = () => {
   const [inforWeather, setInforWeather] = useState(null)
+
   return (
   
    
     
     <>
-    {/* <div>
-        <Header inforWeather={inforWeather}
+ 
+        <Header inforWeather={inforWeather} // quân
           setInforWeather = {setInforWeather}
         />
-        <Nav/>
+        <Nav/> {/* Quân
+        {/*  */}
         <Currently_day inforWeather={inforWeather}/>
-  
-    </div>  */}
-    
+        <Home inforWeather={inforWeather}/>  {/* Sẽ chứa nội dung chính và Lịch */}
         <Routes>
-             <Route path="/" element={<Header/>}> </Route>
-             <Route path="/Currently_day" element={<Currently_day/>}> </Route>
-        </Routes>
+       {/*  <Route path="/" element={<Home/>} />  */}{/*  Khôi */}
+        {/* <Route path="/hourly" element={<HourlyWeather />} />Khôi */}
+      </Routes>
+   
     </>
-    
-  
   )
 }
 
