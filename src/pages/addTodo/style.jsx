@@ -4,7 +4,7 @@ export const SAddTodo = styled.div`
 display: flex;
 justify-content: center;
 margin-top: -150px;
-height: 100vh;
+
 Button{
     margin-top: 40px;
     &:hover{
@@ -27,7 +27,7 @@ form{
     
     width: 100%;
     max-width: 350px;
-    height: 70vh;
+    height: 60vh;
     background-color: #00B4FE ;
     color: #CEF0FF;
     border-radius: 8px;

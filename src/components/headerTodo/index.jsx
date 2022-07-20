@@ -14,6 +14,7 @@ const Header = ({ className, getToDosValue, day }) => {
         const todos = localStorage.getItem("todos") ? JSON.parse(localStorage.getItem("todos")) : []
         getToDosValue(todos, date)
 
+
     }
 
     return (
