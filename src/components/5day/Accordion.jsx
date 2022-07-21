@@ -64,11 +64,13 @@ export default function CustomizedAccordions() {
   // };
   useEffect(() => {
     fetchForecast();;
-  }, []);
+  }, []);  // đoạn này đẻ truyền thêm tên địa điểm vào
+
 
   useEffect(() => {
     if(api){
-      console.log(api.list[0])
+          console.log(api,'đây là API nhé')
+  
     };;
   }, [api])
 
@@ -76,6 +78,7 @@ export default function CustomizedAccordions() {
     try {
       const res = await fetch('https://api.openweathermap.org/data/2.5/forecast?q=Hanoi&appid=7929f327fc4a780215bc2a5b14f3fe24');
       const data = await res.json();
+
       setApi(data);
     } catch (error) {
       console.log(error)
@@ -102,8 +105,7 @@ export default function CustomizedAccordions() {
   // }
   // Hôm nay | {printDay}/{printMonth +1} |
   // <DeviceThermostatIcon />{firstDayTemp()}
-  
-  console.log(firstDayTemp())
+ 
   let days = ['Chủ nhật','Thứ hai','Thứ ba','Thứ tư','Thứ năm','Thứ sáu','Thứ bảy'];
   let now = new Date();
 
@@ -123,72 +125,35 @@ export default function CustomizedAccordions() {
         </div>
         </S_weatherBar>
         </AccordionSummary>
-        <AccordionDetails>
+        {/* <AccordionDetails>
           <Typography>
-           
+          
           </Typography>
-        </AccordionDetails>
+        </AccordionDetails> */}
       </Accordion>
-      <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
-        <AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
-          <Typography>
-          <span className="box-2"><span>{days[now.getDay()+1]} | {printDay + 1}/{printMonth +1}</span></span>
-          </Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget. Lorem ipsum dolor
-            sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-            sit amet blandit leo lobortis eget.
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
-      <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
-        <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
-          <Typography>
-            <span className="box-3"><span>{days[now.getDay()+2]} | {printDay + 2}/{printMonth +1}</span></span>
-          </Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget. Lorem ipsum dolor
-            sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-            sit amet blandit leo lobortis eget.
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
-      <Accordion expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>
-        <AccordionSummary aria-controls="panel4d-content" id="panel4d-header">
-          <Typography>
-            <span className="box-4"><span>{days[now.getDay()+3]} | {printDay + 3}/{printMonth +1}</span></span>
-          </Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget. Lorem ipsum dolor
-            sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-            sit amet blandit leo lobortis eget.
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
-      <Accordion expanded={expanded === 'panel5'} onChange={handleChange('panel5')}>
-        <AccordionSummary aria-controls="panel5d-content" id="panel5d-header">
-          <Typography>
-            <span className="box-5"><span>{days[now.getDay()+4]} | {printDay + 4}/{printMonth +1}</span></span>
-          </Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget. Lorem ipsum dolor
-            sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-            sit amet blandit leo lobortis eget.
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
+
+          {days.map((iteam,index)=>(
+                  // <div>{ index+now.getDay()+1 <=6 ? days[index+now.getDay()+1]:days[index+now.getDay()+1-7]} </div>
+        <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
+          <AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
+            <Typography>
+            <span className="box-2"><span>{index+now.getDay()+1 <=6 ? days[index+now.getDay()+1]:days[index+now.getDay()+1-7]} |
+             {printDay + 1}/{printMonth +1}</span></span>
+            </Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <Typography>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+              malesuada lacus ex, sit amet blandit leo lobortis eget. Lorem ipsum dolor
+              sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
+              sit amet blandit leo lobortis eget.
+            </Typography>
+          </AccordionDetails>
+        </Accordion>
+
+
+          ))}
+
     </>
 
   );
