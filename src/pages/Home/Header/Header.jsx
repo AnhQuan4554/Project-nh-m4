@@ -15,9 +15,10 @@ import Input_search from './Input_search';
 
 
 
-const Header = ({inforWeather,setInforWeather}) => {
+const Header = ({inforWeather,setInforWeather,currentLocation}) => {
     const [nameLocal, setnameLocal] = useState('Hưng Yên') // tên đia chỉ cần tìm 
     // const [inforWeather, setInforWeather] = useState(null)//khác với cái trong fetch là chữ 's'
+    console.log(currentLocation.city);
     const myApiKey = `7929f327fc4a780215bc2a5b14f3fe24`;
     const keyApi_currentday = `https://api.openweathermap.org/data/2.5/weather?q=${nameLocal}&appid=${myApiKey}`
     ///call API
@@ -26,6 +27,11 @@ const Header = ({inforWeather,setInforWeather}) => {
       apiFetch()
       setnameLocal('')
     },[])
+//     useEffect(()=>{
+//       if(nameLocal){
+//           apiFetch();
+//       }
+// },[nameLocal])
     const apiFetch = async()=>{
 
         try {
@@ -33,13 +39,27 @@ const Header = ({inforWeather,setInforWeather}) => {
             let  inforWeathers = await response.json(); //toàn bộ thông tin thời tiết ngày đang nhập xc n
             inforWeathers&&setInforWeather(inforWeathers)
                  // thêm các địa chỉ chi nhập ở input vào local 
-          if(inforWeathers.name){ // nếu tồn tại tên thành phố khi call thì mới thêm vào local
+          if(inforWeathers.name){ // nếu tồn tại tên thành phố khi call thì mới thêm vào local và lúc này nameLocal mới hoàn thành vì nó có sự kiện onchange
 
             const local = localStorage.getItem('locations') ? JSON.parse(localStorage.getItem('locations')):[]
-            if(local.length>4){
-              local.shift()
+           const localExists= local.find((item)=>(item===nameLocal)) //kiểm tra xem trong bảng gợi ý tồn tại tên thành phố chưa 
+         
+           if(localExists){ //nếu có phần tử bị trùng 
+             const localSHow= local.filter((iteam)=>(iteam!=localExists)) //nếu tồn tại thì xóa cái tồn tại đi  rồi đưa cái mới vào cuối mảng vì ở bên inputSuggeest duyệt từ đầu đến cuối 
+             if(localSHow.length>4){
+                localSHow.shift()
+              }
+             localStorage.setItem('locations',JSON.stringify([...localSHow,nameLocal]))
             }
-            localStorage.setItem('locations',JSON.stringify([...local,nameLocal]))
+            else{ //nếu không có phần tử bị trùng
+
+              if(local.length>4){
+                 local.shift()
+               }
+               localStorage.setItem('locations',JSON.stringify([...local,nameLocal]))
+            }
+              
+              
           }
 
           } catch(err) {
@@ -53,9 +73,12 @@ const Header = ({inforWeather,setInforWeather}) => {
   return (
     <S_Header>
         <S_headLogo className="headLogo">
+        <Link to="/">
+
             <div className="imgLogo">
                 <FaSun/>
             </div>
+        </Link>
             <div className="contentLogo">
                 <p>THE FORECAST WEATHER</p>
             </div>
@@ -74,10 +97,14 @@ const Header = ({inforWeather,setInforWeather}) => {
         </S_headSearch>
         <S_head_User className="head_User">
             <div className="signIn">
+<<<<<<< HEAD:src/Header/Header.jsx
                 <Link to='/Currently_day'>SIGN IN</Link> {/* chỗ này để điền link */}
+=======
+                <Link to="Login">SIGN IN</Link> {/* chỗ này để điền link */}
+>>>>>>> 8bb7a74e9da14adb8351009400de1d5a631ef3b6:src/pages/Home/Header/Header.jsx
             </div>
             <div className="signUp">
-                <Link to="">SIGN UP</Link> {/* chỗ này để điền link */}
+                <Link to="Signup">SIGN UP</Link> {/* chỗ này để điền link */}
             </div>
         </S_head_User>
       
