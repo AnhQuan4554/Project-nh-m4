@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import moment from "moment"; // thư viện đổi giờ sunrise sunset
 
 import WeatherDetail from "./WeatherDetail";
 import SunClock from "./SunClock";
 import SunTime from "./SunTime";
 
-import { GiSunbeams, GiWindSlap } from "react-icons/gi";
+import { GiSunbeams } from "react-icons/gi";
 import { FaMonument, FaTemperatureHigh } from "react-icons/fa";
 import { MdWaterDrop, MdCompress, MdVisibility } from "react-icons/md";
 import { TbWind } from "react-icons/tb";
-import moment from "moment"; // thư viện đổi giờ sunrise sunset
 
 const CurrentWeather = ({ inforWeather }) => {
   const location = inforWeather && inforWeather.name ? inforWeather.name : "--";
@@ -32,10 +32,14 @@ const CurrentWeather = ({ inforWeather }) => {
 
   // Sun
   const sunriseTime =
-    inforWeather && inforWeather.sys && inforWeather.sys.sunrise;
+    inforWeather &&
+    inforWeather.sys &&
+    moment.unix(inforWeather.sys.sunrise).format("H:mm");
 
   const sunsetTime =
-    inforWeather && inforWeather.sys && inforWeather.sys.sunset;
+    inforWeather &&
+    inforWeather.sys &&
+    moment.unix(inforWeather.sys.sunset).format("H:mm");
   // moment(inforWeather.sys.sunset).format("LT");
 
   // Lấy giờ hiện tại để chạy cái mặt trời
@@ -65,14 +69,8 @@ const CurrentWeather = ({ inforWeather }) => {
       : "--";
 
   // chỉ số chất lượng không khí
-  const lat =
-    inforWeather &&
-    inforWeather.coord &&
-    Number(inforWeather.coord.lat).toFixed(3);
-  const lon =
-    inforWeather &&
-    inforWeather.coord &&
-    Number(inforWeather.coord.lon).toFixed(3);
+  const lat = inforWeather && inforWeather.coord && inforWeather.coord.lat;
+  const lon = inforWeather && inforWeather.coord && inforWeather.coord.lon;
 
   // Chỉ số UV
   const [uvIndex, setUvIndex] = useState(null);
@@ -112,7 +110,7 @@ const CurrentWeather = ({ inforWeather }) => {
           <p>{temperature}&deg;</p>
         </div>
         <div className="today-weather__suntime">
-          <SunClock sunrise={360} sunset={1080} />
+          <SunClock sunrise={sunriseTime} sunset={sunsetTime} />
           <SunTime sunriseTime={sunriseTime} sunsetTime={sunsetTime} />
         </div>
       </div>

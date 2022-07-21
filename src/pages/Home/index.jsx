@@ -3,32 +3,35 @@ import React from "react";
 import BodySection from "../../components/BodySection";
 import CurrentWeather from "../../components/CurrentWeather";
 import HourlyForecast from "../../components/HourlyForecast";
-import Currently_day from "../../Currently_day/Currently_day";
+import AddToDo from "../addTodo";
+import Planned from "../planned";
+import Currently_day from "./Currently_day/Currently_day";
+import Header from "./Header/Header";
+import Nav from "./Header/Nav";
 
 const Home = ({
   inforWeather,
+  currentLocation,
+  setInforWeather,
   hourlyWeather,
   setHourlyWeather,
-  UVIndex,
-  setUVIndex,
 }) => {
   return (
-    <BodySection
-      mainContent={[
-        <Currently_day inforWeather={inforWeather} />,
-        <CurrentWeather
-          inforWeather={inforWeather}
-          setHourlyWeather={setHourlyWeather}
-          UVIndex={UVIndex}
-          setUVIndex={setUVIndex}
-        />,
-        <HourlyForecast
-          inforWeather={inforWeather}
-          hourlyWeather={hourlyWeather}
-          setHourlyWeather={setHourlyWeather}
-        />,
-      ]}
-    />
+    <>
+      {/* <Header currentLocation={currentLocation} inforWeather={inforWeather} setInforWeather = {setInforWeather}/> */}
+      {/* <Nav /> */}
+
+      <BodySection
+        mainContent={[
+          <Currently_day inforWeather={inforWeather} />,
+          <CurrentWeather
+            inforWeather={inforWeather}
+            setHourlyWeather={setHourlyWeather}
+          />,
+        ]}
+        rightContent={[<AddToDo />, <Planned />]} // bao giờ cho lịch vào cái này
+      />
+    </>
   );
 };
 

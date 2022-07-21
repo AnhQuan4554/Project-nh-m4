@@ -6,10 +6,13 @@ export const S_container = styled.div`
 export const S_headerCurrently = styled.div`
   padding: 10px 16px;
   background-color: #286661;
-  /* width: 800px; */
-  /* height: 170 px; */
-  /* margin-left: 165px;
-  margin-top: 15px; */
+  width: 800px;
+  height: 170 px;
+  /* margin-left: 165px; */
+  /* margin-top: 15px; */
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+    rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
 `;
 export const S_location = styled.div`
   display: flex;
