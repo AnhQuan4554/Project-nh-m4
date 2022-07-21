@@ -97,11 +97,7 @@ const Header = ({inforWeather,setInforWeather,currentLocation}) => {
         </S_headSearch>
         <S_head_User className="head_User">
             <div className="signIn">
-<<<<<<< HEAD:src/Header/Header.jsx
-                <Link to='/Currently_day'>SIGN IN</Link> {/* chỗ này để điền link */}
-=======
                 <Link to="Login">SIGN IN</Link> {/* chỗ này để điền link */}
->>>>>>> 8bb7a74e9da14adb8351009400de1d5a631ef3b6:src/pages/Home/Header/Header.jsx
             </div>
             <div className="signUp">
                 <Link to="Signup">SIGN UP</Link> {/* chỗ này để điền link */}
