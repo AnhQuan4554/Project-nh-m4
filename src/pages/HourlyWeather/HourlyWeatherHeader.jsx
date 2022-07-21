@@ -5,10 +5,10 @@ const HourlyWeatherHeader = ({ currentLocation, accessTime }) => {
   return (
     <S_HourlyWeatherHeader>
       <div className="title">
-        <h2 className="label">Thời tiết hàng giờ</h2>
+        <h2 className="label">Thời tiết mỗi 3 giờ</h2>
         <p className="location"> - {currentLocation}</p>
       </div>
-      <div className="time">Kể từ {accessTime}</div>
+      <div className="time">Kể từ {accessTime < 10 ? `0${accessTime}` : accessTime}</div>
     </S_HourlyWeatherHeader>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, createContext } from "react";
+import React, { useState, useEffect, createContext, useRef } from "react";
 import styled from "styled-components";
 import { FaSun } from "react-icons/fa";
 import { FaSearchLocation } from "react-icons/fa";
@@ -7,13 +7,15 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import { S_Header, S_headLogo, S_headSearch, S_head_User } from "./Header_CSS";
 import Input_search from "./Input_search";
 
-const Header = ({ inforWeather, setInforWeather }) => {
+const Header = ({ inforWeather, setInforWeather, setHourlyWeather }) => {
   const unit = "metric";
   const [nameLocal, setnameLocal] = useState("Hưng Yên"); // tên đia chỉ cần tìm
   // const [inforWeather, setInforWeather] = useState(null)//khác với cái trong fetch là chữ 's'
   const myApiKey = `7929f327fc4a780215bc2a5b14f3fe24`;
-  const keyApi_currentday = `https://api.openweathermap.org/data/2.5/weather?q=${nameLocal}&appid=${myApiKey}&units=${unit}`;
+  const keyApi_currentday = `https://api.openweathermap.org/data/2.5/weather?q=${nameLocal}&appid=${myApiKey}&units=${unit}&lang=vi`;
   ///call API
+  let lat = 0,
+    lon = 0;
   useEffect(() => {
     // ngay khi mới vào thì call luôn ở địa điểm người dung
     //còn khi nhập và ấn enter ở Input_search cx call
@@ -25,6 +27,12 @@ const Header = ({ inforWeather, setInforWeather }) => {
       let response = await fetch(`${keyApi_currentday}`);
       let inforWeathers = await response.json(); //toàn bộ thông tin thời tiết ngày đang nhập xc n
       inforWeathers && setInforWeather(inforWeathers);
+      lat =
+        await inforWeathers && inforWeathers.coord && inforWeathers.coord.lat;
+      lon =
+        await inforWeathers && inforWeathers.coord && inforWeathers.coord.lon;
+
+      getHourForecast();
       // thêm các địa chỉ chi nhập ở input vào local
       if (inforWeathers.name) {
         // nếu tồn tại tên thành phố khi call thì mới thêm vào local
@@ -44,6 +52,23 @@ const Header = ({ inforWeather, setInforWeather }) => {
       // catches errors both in fetch and response.json
       console.log(`lỗi rồi`);
       alert(err);
+    }
+  };
+
+  const getHourForecast = async () => {
+    try {
+      // console.log(
+      //   `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=7929f327fc4a780215bc2a5b14f3fe24&units=${unit}&lang=vi`
+      // );
+      const hourForecastRes = await fetch(
+        `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=7929f327fc4a780215bc2a5b14f3fe24&units=${unit}&lang=vi`
+      );
+      const hourForecast = await hourForecastRes.json();
+      setHourlyWeather(hourForecast);
+    } catch {
+      alert(
+        "Oops! Something went wrong with the forecast. Please try again later."
+      );
     }
   };
 

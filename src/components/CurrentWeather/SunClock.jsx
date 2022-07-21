@@ -1,17 +1,21 @@
-import React from "react";
+import React, { memo, useEffect } from "react";
+
 import styled from "styled-components";
 
 import { HiSun } from "react-icons/hi";
 
-const SunClock = ({ sunrise, sunset, currentTime }) => {
+const SunClock = ({ sunrise, sunset }) => {
+  const nowTime = new Date();
+  const nowHour = nowTime.getHours();
+  const nowMinute = nowTime.getMinutes();
+  const currentTime = nowHour * 60 + nowMinute;
+  const now = (currentTime <= sunset ? currentTime : sunset) - sunrise;
+
   const time = sunset - sunrise;
   const anglePerMinute = 180 / time;
-  const now = (currentTime <= sunset ? currentTime : sunset) - sunrise;
   const angle = anglePerMinute * now;
   const cx = 50 * Math.cos((angle * Math.PI) / 180);
   const cy = Math.sqrt(50 * 50 - cx * cx);
-
-  console.log(currentTime + "cT ");
 
   return (
     <S_SunClock angle={angle} cx={cx} cy={cy}>
@@ -23,7 +27,7 @@ const SunClock = ({ sunrise, sunset, currentTime }) => {
   );
 };
 
-export default SunClock;
+export default memo(SunClock);
 
 const S_SunClock = styled.div`
   position: relative;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 import WeatherDetail from "./WeatherDetail";
@@ -12,23 +12,96 @@ import { TbWind } from "react-icons/tb";
 import moment from "moment"; // thư viện đổi giờ sunrise sunset
 
 const CurrentWeather = ({ inforWeather }) => {
-  const location = inforWeather && inforWeather.name && inforWeather.name;
-  const temperature =
-    inforWeather && inforWeather.main && inforWeather.main.temp;
-  // Number(inforWeather.main.temp - 280).toFixed(1);
+  const location = inforWeather && inforWeather.name ? inforWeather.name : "--";
 
+  // Temperature
+  const temperature =
+    inforWeather && inforWeather.main && inforWeather.main["feels_like"]
+      ? Math.round(Number(inforWeather.main["feels_like"]))
+      : "--";
+  const temperatureMin =
+    inforWeather && inforWeather.main && inforWeather.main["temp_min"]
+      ? Math.round(Number(inforWeather.main["temp_min"]))
+      : "--";
+  const temperatureMax =
+    inforWeather &&
+    inforWeather.main &&
+    temperatureMin !== Math.round(Number(inforWeather.main["temp_max"]))
+      ? Math.round(Number(inforWeather.main["temp_max"]))
+      : "--";
+
+  // Sun
   const sunriseTime =
     inforWeather && inforWeather.sys && inforWeather.sys.sunrise;
 
   const sunsetTime =
-    inforWeather &&
-    inforWeather.sys &&
-    moment(inforWeather.sys.sunset).format("LT");
+    inforWeather && inforWeather.sys && inforWeather.sys.sunset;
+  // moment(inforWeather.sys.sunset).format("LT");
 
-  const nowTime = new Date();
-  const nowHour = nowTime.getHours();
-  const nowMinute = nowTime.getMinutes();
-  const currentTime = nowHour * 60 + nowMinute;
+  // Lấy giờ hiện tại để chạy cái mặt trời
+
+  // áp suất
+  const pressure =
+    inforWeather && inforWeather.main && inforWeather.main.pressure
+      ? inforWeather.main.pressure
+      : "--";
+
+  // độ ẩm
+  const humidity =
+    inforWeather && inforWeather.main && inforWeather.main.humidity
+      ? inforWeather.main.humidity
+      : "--";
+
+  // tầm nhìn
+  const visibility =
+    inforWeather && inforWeather.visibility
+      ? Number(inforWeather.visibility) / 1000
+      : "--";
+
+  // gió
+  const wind =
+    inforWeather && inforWeather.wind && inforWeather.wind.speed
+      ? Number(inforWeather.wind.speed * 3.6).toFixed(1)
+      : "--";
+
+  // chỉ số chất lượng không khí
+  const lat =
+    inforWeather &&
+    inforWeather.coord &&
+    Number(inforWeather.coord.lat).toFixed(3);
+  const lon =
+    inforWeather &&
+    inforWeather.coord &&
+    Number(inforWeather.coord.lon).toFixed(3);
+
+  // Chỉ số UV
+  const [uvIndex, setUvIndex] = useState(null);
+  const [textColor, setTextColor] = useState("");
+
+  const uvHandler = async () => {
+    try {
+      const uvRes = await fetch(
+        `http://api.weatherstack.com/current?access_key=63310d5929808f55138cbf3097b97af2&units=m&query=${lat},${lon}`
+      );
+      const uvData = await uvRes.json();
+      console.log(uvData, "uv data");
+      setUvIndex(uvData && uvData.current ? uvData.current["uv_index"] : "--");
+    } catch {
+      alert("wrong api");
+    }
+  };
+
+  useEffect(() => {
+    if (uvIndex < 3) setTextColor("#03e45f");
+    else if (uvIndex < 6) setTextColor("#fffe35");
+    else if (uvIndex < 8) setTextColor("#ff7e15");
+    else if (uvIndex < 11) setTextColor("#fe1f02");
+    else setTextColor("#9e7ad2");
+  }, [uvIndex]);
+
+  useEffect(() => {
+    uvHandler();
+  }, [lat, lon]);
 
   return (
     <S_CurrentWeather>
@@ -39,11 +112,7 @@ const CurrentWeather = ({ inforWeather }) => {
           <p>{temperature}&deg;</p>
         </div>
         <div className="today-weather__suntime">
-          <SunClock
-            sunrise={360}
-            sunset={1080}
-            currentTime={currentTime}
-          />
+          <SunClock sunrise={360} sunset={1080} />
           <SunTime sunriseTime={sunriseTime} sunsetTime={sunsetTime} />
         </div>
       </div>
@@ -51,29 +120,34 @@ const CurrentWeather = ({ inforWeather }) => {
         <WeatherDetail
           iconComp={<FaTemperatureHigh />}
           label="Cao/Thấp"
-          info="--/24&deg;"
+          info={`${temperatureMax}/${temperatureMin}`}
+          iconHTML="&deg;"
         />
-        <WeatherDetail iconComp={<MdWaterDrop />} label="Độ ẩm" info="75%" />
+        <WeatherDetail
+          iconComp={<MdWaterDrop />}
+          label="Độ ẩm"
+          info={`${humidity}%`}
+        />
         <WeatherDetail
           iconComp={<MdCompress />}
           label="Áp suất"
-          info="1001.0mb"
+          info={`${pressure} mb`}
         />
         <WeatherDetail
           iconComp={<MdVisibility />}
           label="Tầm nhìn"
-          info="9.66km"
+          info={`${visibility} km`}
         />
-        <WeatherDetail iconComp={<TbWind />} label="Gió" info="23km/giờ" />
+        <WeatherDetail
+          iconComp={<TbWind />}
+          label="Gió"
+          info={`${wind} km/giờ`}
+        />
         <WeatherDetail
           iconComp={<GiSunbeams />}
           label="Chỉ số UV"
-          info="1 / 10"
-        />
-        <WeatherDetail
-          iconComp={<GiWindSlap />}
-          label="Chỉ số chất lượng không khí"
-          info="55"
+          info={uvIndex <= 11 ? uvIndex : `${uvIndex}+`}
+          color={textColor}
         />
       </ul>
     </S_CurrentWeather>

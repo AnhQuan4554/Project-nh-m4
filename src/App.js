@@ -8,12 +8,14 @@ import Home from "./pages/Home";
 import HourlyWeather from "./pages/HourlyWeather";
 const App = () => {
   const [inforWeather, setInforWeather] = useState(null);
+  const [hourlyWeather, setHourlyWeather] = useState(null);
 
   return (
     <div>
       <Header
         inforWeather={inforWeather} // quân
         setInforWeather={setInforWeather}
+        setHourlyWeather={setHourlyWeather} //Khoi
       />
       <Nav /> {/* Quân */}
       {/* <Currently_day inforWeather={inforWeather} /> */}
@@ -21,9 +23,26 @@ const App = () => {
       {/* <Home inforWeather={inforWeather} />{" "} */}
       {/* Sẽ chứa nội dung chính và Lịch */}
       <Routes>
-        <Route path="/" element={<Home inforWeather={inforWeather} />} />
+        <Route
+          path="/"
+          element={
+            <Home
+              inforWeather={inforWeather}
+              hourlyWeather={hourlyWeather}
+              setHourlyWeather={setHourlyWeather}
+            />
+          }
+        />
         {/*  Khôi */}
-        <Route path="/hourly" element={<HourlyWeather />} />
+        <Route
+          path="/hourly"
+          element={
+            <HourlyWeather
+              inforWeather={inforWeather}
+              hourlyWeather={hourlyWeather}
+            />
+          }
+        />
       </Routes>
     </div>
   );

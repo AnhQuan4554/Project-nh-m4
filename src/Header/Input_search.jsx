@@ -26,6 +26,7 @@ const Input_search = ({ setnameLocal, nameLocal, apiFetch, inforWeather }) => {
         value={nameLocal}
         type="text"
         placeholder="Tỉnh thành phố "
+        className="InputSearch"
       />
       {showSuggest ? (
         <Input_suggest

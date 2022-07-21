@@ -1,49 +1,62 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 import { FaTemperatureHigh } from "react-icons/fa";
 import { TbWind } from "react-icons/tb";
-import { MdWaterDrop } from "react-icons/md";
-import { GiSunbeams, GiHeavyRain } from "react-icons/gi";
+import { MdWaterDrop, MdVisibility } from "react-icons/md";
+import { GiHeavyRain } from "react-icons/gi";
 import { FaCloud } from "react-icons/fa";
 
 import HourlyWeatherDetail from "./HourlyWeatherDetail";
 
-const HourlyWeatherItemDetails = () => {
+const HourlyWeatherItemDetails = ({
+  temperatureFeel,
+  wind,
+  humidity,
+  visibility,
+  rainVolumne,
+  cloud,
+}) => {
   return (
     <S_HourlyWeatherItemDetails>
       <div className="top__content">
         <HourlyWeatherDetail
           iconComp={<FaTemperatureHigh />}
           label="Cảm giác như"
-          content="35&deg;"
+          content={temperatureFeel}
+          iconHTML="&deg;"
         />
         <HourlyWeatherDetail
           iconComp={<TbWind />}
           label="Gió"
-          content="14 km/giờ"
+          content={wind}
+          iconHTML="km/giờ"
         />
         <HourlyWeatherDetail
           iconComp={<MdWaterDrop />}
           label="Độ ẩm"
-          content="85%"
+          content={humidity}
+          iconHTML="%"
         />
       </div>
       <div className="bottom__content">
         <HourlyWeatherDetail
-          iconComp={<GiSunbeams />}
-          label="Chỉ số UV"
-          content="1 / 10"
+          iconComp={<MdVisibility />}
+          label="Tầm nhìn"
+          content={visibility}
+          iconHTML="km"
         />
         <HourlyWeatherDetail
           iconComp={<FaCloud />}
           label="Mây che phủ"
-          content="51%"
+          content={cloud}
+          iconHTML="%"
         />
         <HourlyWeatherDetail
           iconComp={<GiHeavyRain />}
           label="Lượng mưa"
-          content="1.15mm"
+          content={rainVolumne}
+          iconHTML="mm"
         />
       </div>
     </S_HourlyWeatherItemDetails>
