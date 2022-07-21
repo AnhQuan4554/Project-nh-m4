@@ -15,6 +15,8 @@ import Signup from './Authentication/Signup'
 import AddToDo from './pages/addTodo'
 import Planned from './pages/planned'
 import HourlyForecast from './components/HourlyForecast'
+import { Accordion } from '@mui/material'
+
 const App = () => {
   const [inforWeather, setInforWeather] = useState(null)
   /*  xử lí địa điểm lúc đăng nhập  */
@@ -67,7 +69,7 @@ const App = () => {
       <Header currentLocation={currentLocation} inforWeather={inforWeather} setInforWeather = {setInforWeather}/>
        {/* <Nav/>
       <Currently_day  inforWeather={inforWeather}/> */}
-
+     
         <Routes>
             <Route path="/"
   
@@ -76,6 +78,7 @@ const App = () => {
             <Route path="/HourlyForecast" element={<HourlyForecast />} />
             <Route path="/addtodo" element={<AddToDo />} />
             <Route path="/planned" element={<Planned />} />
+           
       </Routes>
     </div>
 
