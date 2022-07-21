@@ -6,8 +6,9 @@ import Nav from './pages/Home/Header/Nav'
 import {
   BrowserRouter,
   Routes,
-  Route,
+  Route,Link
 } from "react-router-dom";
+
 import Home from './pages/Home/index'
 import HourlyWeather from './pages/HourlyWeather'
 import Login from './Authentication/Login'

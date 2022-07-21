@@ -3,20 +3,24 @@ import styled from 'styled-components'
 import { TbTemperatureCelsius } from 'react-icons/tb';
 import {S_headerCurrently,S_container,S_location,S_contentCurrently} from './Currently_CSS'
 const Currently_day = ({inforWeather}) => {
-  console.log(inforWeather,'ở curenday')
-  const temp =inforWeather && inforWeather.main && Number(inforWeather.main.temp-280).toFixed(1)
-  const tempMin =inforWeather && inforWeather.main  && Number(inforWeather.main.temp_min-280).toFixed(1)
-  const tempMax = inforWeather && inforWeather.main && Number(inforWeather.main.temp_max-280).toFixed(1)
-  const icon = inforWeather && inforWeather.main &&  inforWeather.weather[0].icon
-  if(!temp && ! tempMin && !tempMax && !icon)return <h1>NO DATA</h1>
+  // console.log(inforWeather,'ở curenday')
+  const temp =inforWeather && Number(inforWeather.main.temp-280).toFixed(1)
+  const tempMin =inforWeather&& Number(inforWeather.main.temp_min-280).toFixed(1)
+  const tempMax = inforWeather&& Number(inforWeather.main.temp_max-280).toFixed(1)
+  const icon = inforWeather&&  inforWeather.weather[0].icon
+  let newDate = new Date()
+  let minute  = newDate.getMinutes()
+  let hours = newDate.getHours();
+  let date = newDate.getDate();
+  let month = newDate.getMonth() + 1;
+  let year = newDate.getFullYear();
   return (
   
-    <S_container >
+      <S_container >
             <S_headerCurrently className="headerCurrently">
                 <S_location >
-    
-                    <span className="location_name">{inforWeather&& inforWeather.name}</span>
-                        <div className="curently_hour">Kể từ 10 giờ </div>{/* dùng gethour */}
+                        <span className="location_name">{inforWeather&& inforWeather.name}</span>
+                        <div className="curently_hour">Kể từ {hours} giờ {minute} phút</div>{/* dùng gethour */}
                 </S_location>
                 
                 <S_contentCurrently >
@@ -25,6 +29,9 @@ const Currently_day = ({inforWeather}) => {
                       <div className="tempCurrently">
                         <h1> {inforWeather&&temp}</h1>{/* call API */}
                           <TbTemperatureCelsius style={{fontSize:'40px',color:'yellow'}}/>
+                      </div>
+                      <div className="time">
+                        <span>Ngày {date}</span>  <span>tháng {month}</span>
                       </div>
                         <div className="content_bonus">
                           {/* <p className="dateCurrently">Nhiệt độ của ngày </p> */}
@@ -40,8 +47,17 @@ const Currently_day = ({inforWeather}) => {
                     </div>
                 </S_contentCurrently>
             </S_headerCurrently>
+            {/* <div className="Inf_desvribe">
+                <p>Một số thông tin chi tiết</p>
+
+                <span className="windy_visibility">Tầm nhìn 1000 m</span>
+                <span className="windy_speed">1500</span>
+                <span className="windy_speed">1500</span>
+                <span className="windy_speed">1500</span>
+                
+            </div> */}
     </S_container>
-     
+
   )
 }
 

@@ -7,6 +7,7 @@ import {
     Link,
   } from "react-router-dom";
 const Nav = () => {
+  
   return (
     <S_Navigate className='Navigate'>
       <div className="Navigate_link active"> {/* active hiện border  */}
@@ -20,6 +21,7 @@ const Nav = () => {
       </div>
     
     </S_Navigate>
+    
   )
 }
 
