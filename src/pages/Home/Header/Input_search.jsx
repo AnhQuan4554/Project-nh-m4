@@ -26,13 +26,13 @@ const Input_search = ({ setnameLocal, nameLocal, apiFetch, inforWeather }) => {
         type="text"
         placeholder="Tỉnh thành phố "
       />
-     <Input_suggest
+     {/* <Input_suggest
           apiFetch={apiFetch}
           nameLocal={nameLocal}
           setnameLocal={setnameLocal}
           setShowSuggest={setShowSuggest}
-        />
-      {/* {showSuggest ? (
+        /> */}
+      {showSuggest ? (
         <Input_suggest
           apiFetch={apiFetch}
           nameLocal={nameLocal}
@@ -41,7 +41,7 @@ const Input_search = ({ setnameLocal, nameLocal, apiFetch, inforWeather }) => {
         />
       ) : (
         ""
-      )} */}
+      )}
     </div>
   );
 };
