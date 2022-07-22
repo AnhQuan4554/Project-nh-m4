@@ -1,13 +1,22 @@
 import React from "react";
 import styled from "styled-components";
 
-const HourlyWeatherDetail = ({ iconComp, label, content }) => {
+const HourlyWeatherDetail = ({
+  iconComp,
+  label,
+  content,
+  iconHTML = "",
+  iconColor,
+}) => {
   return (
     <S_HourlyWeatherDetail>
       <div className="icon">{iconComp}</div>
       <div className="info">
         <p>{label}</p>
-        <h4>{content}</h4>
+        <p>
+          {content}
+          {iconHTML}
+        </p>
       </div>
     </S_HourlyWeatherDetail>
   );
@@ -30,5 +39,10 @@ const S_HourlyWeatherDetail = styled.span`
   .info p {
     font-size: 15px;
     margin-bottom: 5px;
+  }
+
+  p {
+    display: flex;
+    align-items: center;
   }
 `;

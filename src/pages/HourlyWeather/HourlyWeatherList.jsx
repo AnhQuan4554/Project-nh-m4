@@ -1,39 +1,35 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+
+import { CgInfinity } from "react-icons/cg";
 
 import HourlyWeatherItem from "./HourlyWeatherItem/HourlyWeatherItem";
 
-const HourlyWeatherList = ({ today }) => {
+const HourlyWeatherList = ({time, listInfo }) => {
+  console.log(listInfo, "ở hour list");
+
   return (
     <S_HourlyWeatherList>
-      <h2 className="day">{today}</h2>
-      <HourlyWeatherItem
-        time="17:00"
-        temperature="28&deg;"
-        iconCode="04d"
-        weather="Nhiều mây"
-        rainVolumne="1.15"
-        windSpeed="14"
-        keyValue={1}
-      />
-      <HourlyWeatherItem
-        time="17:00"
-        temperature="28&deg;"
-        iconCode="04d"
-        weather="Nhiều mây"
-        rainVolumne="1.15"
-        windSpeed="14"
-        keyValue={2}
-      />
-      <HourlyWeatherItem
-        time="17:00"
-        temperature="28&deg;"
-        iconCode="04d"
-        weather="Nhiều mây"
-        rainVolumne="1.15"
-        windSpeed="14"
-        keyValue={3}
-      />
+      <h2 className="day">{`${time.day}, ngày ${time.date} tháng ${time.month}`}</h2>
+      {listInfo &&
+        listInfo.map((info, index) => {
+          const time = new Date(info["dt_txt"]).getHours();
+          return (
+            <HourlyWeatherItem
+              time={`${time}:00`}
+              temperature={Math.round(Number(info.main.temp))}
+              iconCode={info.weather[0].icon}
+              weather={info.weather[0].description}
+              rainVolumne={info.rain && info.rain["3h"]}
+              windSpeed={(Number(info.wind.speed) * 3.6).toFixed(1)}
+              temperatureFeel={Math.round(Number(info.main["feels_like"]))}
+              humidity={info.main.humidity}
+              cloud={info.clouds.all}
+              visibility={(Number(info.visibility) / 1000).toFixed(1)}
+              key={index}
+            />
+          );
+        })}
     </S_HourlyWeatherList>
   );
 };

@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const SAddTodo = styled.div`
 display: flex;
 justify-content: center;
-margin-top: -150px;
+/* margin-top: -150px; */
 height: 100vh;
 Button{
     margin-top: 40px;
@@ -31,7 +31,7 @@ form{
     background-color: #00B4FE ;
     color: #CEF0FF;
     border-radius: 8px;
-    margin-top: 4%;
+    /* margin-top: 4%; */
     
 }
 h1{

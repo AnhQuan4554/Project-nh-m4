@@ -18,7 +18,7 @@ const Input_suggest = ({setShowSuggest,apiFetch,setnameLocal,nameLocal}) => {
             <li onClick={(e)=>{handleClick(e)}}   key={index}>{iteam}</li>
         ))}
     </S_suggest>
-  )
-}
+  );
+};
 
-export default Input_suggest
+export default Input_suggest;

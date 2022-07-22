@@ -1,23 +1,27 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
+import { CgInfinity } from "react-icons/cg";
+
 import HourlyWeatherItemDetails from "../HourlyWeatherDetail/HourlyWeatherItemDetails";
 import HourlyWeatherItemSummary from "./HourlyWeatherItemSummary";
 
 const HourlyWeatherItem = ({
   time,
-  temperature,
-  iconCode,
+  temperature = <CgInfinity />,
+  iconCode = "01d",
   weather,
-  rainVolumne,
-  windSpeed,
-  keyValue,
+  rainVolumne = <CgInfinity />,
+  windSpeed = <CgInfinity />,
+  temperatureFeel = <CgInfinity />,
+  humidity = <CgInfinity />,
+  visibility = <CgInfinity />,
+  cloud = <CgInfinity />,
 }) => {
   const [show, setShow] = useState(false);
-  console.log(show);
 
   return (
-    <S_HourlyWeatherItem key={keyValue}>
+    <S_HourlyWeatherItem>
       <HourlyWeatherItemSummary
         time={time}
         temperature={temperature}
@@ -28,7 +32,16 @@ const HourlyWeatherItem = ({
         setShow={setShow}
         isShow={show}
       />
-      {show && <HourlyWeatherItemDetails />}
+      {show && (
+        <HourlyWeatherItemDetails
+          temperatureFeel={temperatureFeel}
+          wind={windSpeed}
+          humidity={humidity}
+          visibility={visibility}
+          rainVolumne={rainVolumne}
+          cloud={cloud}
+        />
+      )}
     </S_HourlyWeatherItem>
   );
 };
