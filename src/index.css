@@ -11,7 +11,6 @@ html {
 }
 
 body {
-  /* padding: 20px; */
   min-height: 100vh;
   background: linear-gradient(
       0deg,
@@ -24,6 +23,34 @@ body {
     no-repeat;
 }
 
+body::-webkit-scrollbar {
+  width: 8px;
+  border-radius: 6px;
+}
+
+body::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: linear-gradient(
+    180deg,
+    #e5dee2,
+    #e5dee2 20%,
+    #aba2b4 60%,
+    #59516e 90%,
+    #59516e
+  );
+}
+
+body::-webkit-scrollbar-track {
+  background: linear-gradient(
+    0deg,
+    #e5dee2,
+    #e5dee2 20%,
+    #aba2b4 60%,
+    #59516e 90%,
+    #59516e
+  );
+}
+
 a {
   text-decoration: none;
   color: unset;
@@ -32,7 +59,7 @@ a {
 li {
   list-style-type: none;
 }
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;

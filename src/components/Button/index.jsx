@@ -9,6 +9,7 @@ export default Button;
 
 const S_Button = styled.button`
   font-family: "Josefin Sans", sans-serif;
+  width: unset !important;
   color: #fff;
   font-size: 14px;
   font-weight: 600;

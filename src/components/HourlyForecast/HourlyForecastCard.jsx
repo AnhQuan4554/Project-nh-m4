@@ -3,12 +3,20 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 import { GiHeavyRain } from "react-icons/gi";
+import { CgInfinity } from "react-icons/cg";
 
-const HourlyForecastCard = ({ time, currentTime = false }) => {
-  const temperature = 27;
-  const iconCode = "10d";
-  const weather = "nhiều mây";
-  const rainVolumne = 1.15;
+const HourlyForecastCard = ({
+  time,
+  currentTime = false,
+  temperature = <CgInfinity />,
+  iconCode = "01d",
+  weather,
+  rainVolumne = <CgInfinity />,
+}) => {
+  // const temperature = 27;
+  // const iconCode = "10d";
+  // const weather = "nhiều mây";
+  // const rainVolumne = 1.15;
 
   return (
     <S_HourlyForecastCard fontWeight={currentTime ? "700" : "400"}>
@@ -18,7 +26,7 @@ const HourlyForecastCard = ({ time, currentTime = false }) => {
         <figure className="icon-weather">
           <img
             src={`http://openweathermap.org/img/wn/${iconCode}@2x.png`}
-            alt={weather}
+            title={weather}
           />
         </figure>
         <div className="rain-volumne">
@@ -36,6 +44,7 @@ const S_HourlyForecastCard = styled.li`
   width: calc(20% - 20px);
   border-right: 1px solid;
   font-weight: ${(props) => props.fontWeight} !important;
+  text-align: center;
   border-image-source: linear-gradient(
     180deg,
     hsla(0, 0%, 87.1%, 0) 0,
@@ -45,9 +54,12 @@ const S_HourlyForecastCard = styled.li`
     hsla(0, 0%, 87.1%, 0)
   );
   border-image-slice: 1 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+
+  a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
   .time {
     font-weight: ${(props) => props.fontWeight};
@@ -59,8 +71,9 @@ const S_HourlyForecastCard = styled.li`
   }
 
   .icon-weather {
-    width: 55px;
-    margin-bottom: 5px;
+    width: 60px;
+    margin-top: 6px;
+    margin-bottom: 6px;
   }
 
   .icon-weather img {
@@ -69,5 +82,7 @@ const S_HourlyForecastCard = styled.li`
 
   .rain-volumne {
     font-size: 17px;
+    display: flex;
+    align-items: center;
   }
 `;

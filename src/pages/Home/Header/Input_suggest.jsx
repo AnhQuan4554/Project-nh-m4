@@ -11,14 +11,14 @@ const Input_suggest = ({setShowSuggest,apiFetch,setnameLocal,nameLocal}) => {
          setShowSuggest(false)
         //  setnameLocal('')
         }
-       
+       /////////////////có câp nật nha ok chưa 
     return (
     <S_suggest >
         {locals.reverse().map((iteam,index)=>(
             <li onClick={(e)=>{handleClick(e)}}   key={index}>{iteam}</li>
         ))}
     </S_suggest>
-  )
-}
+  );
+};
 
-export default Input_suggest
+export default Input_suggest;

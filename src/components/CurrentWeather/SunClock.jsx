@@ -1,17 +1,33 @@
-import React from "react";
+import React, { memo, useEffect } from "react";
+import moment from "moment";
 import styled from "styled-components";
 
 import { HiSun } from "react-icons/hi";
 
-const SunClock = ({ sunrise, sunset, currentTime }) => {
-  const time = sunset - sunrise;
+const SunClock = ({ sunrise, sunset }) => {
+
+  // đổi từ string sang phút để tính toán
+  const sunriseHour = sunrise && Number(sunrise[0]);
+  const sunriseMinute = sunrise && Number(sunrise.slice(2));
+  const sunsetHour = sunrise && Number(sunset[0]);
+  const sunsetMinute = sunrise && Number(sunset.slice(2));
+  const sunriseTime = sunriseHour * 60 + sunriseMinute;
+  const sunsetTime = sunsetHour * 60 + sunsetMinute;
+
+  // tính toán giờ hiện tại
+  const nowTime = new Date();
+  const nowHour = nowTime.getHours();
+  const nowMinute = nowTime.getMinutes();
+  const currentTime = nowHour * 60 + nowMinute;
+  const now = (currentTime <= sunsetTime ? currentTime : sunsetTime) - sunriseTime;
+
+  // console.log(now, "ở SunClock");
+
+  const time = sunsetTime - sunriseTime;
   const anglePerMinute = 180 / time;
-  const now = currentTime ? currentTime - sunrise : 0;
-  const angle = anglePerMinute * now;
+  const angle = now <= time ? anglePerMinute * now : 180;
   const cx = 50 * Math.cos((angle * Math.PI) / 180);
   const cy = Math.sqrt(50 * 50 - cx * cx);
-
-  // console.log(Math.cos(angle), angle);
 
   return (
     <S_SunClock angle={angle} cx={cx} cy={cy}>
@@ -23,7 +39,7 @@ const SunClock = ({ sunrise, sunset, currentTime }) => {
   );
 };
 
-export default SunClock;
+export default memo(SunClock);
 
 const S_SunClock = styled.div`
   position: relative;

@@ -20,9 +20,12 @@ const HourlyWeatherItemSummary = ({
   };
 
   return (
-    <S_HourlyWeatherItemSummary onClick={handleShowWeatherDetails} isShow={isShow}>
+    <S_HourlyWeatherItemSummary
+      onClick={handleShowWeatherDetails}
+      isShow={isShow}
+    >
       <span className="time">{time}</span>
-      <span className="temperature">{temperature}</span>
+      <span className="temperature">{temperature}&deg;</span>
       <span className="weather">
         <figure className="weather__icon">
           <img
@@ -30,7 +33,9 @@ const HourlyWeatherItemSummary = ({
             alt={weather}
           />
         </figure>
-        <p className="weather__text">{weather}</p>
+        <p className="weather__text">
+          {weather.charAt(0).toUpperCase() + weather.slice(1)}
+        </p>
       </span>
       <span className="rain-volumne">
         <div className="rain-volumne__icon">
@@ -54,8 +59,8 @@ const HourlyWeatherItemSummary = ({
 export default HourlyWeatherItemSummary;
 
 const S_HourlyWeatherItemSummary = styled.summary`
-  padding: 10px 26px;
-  font-size: 14px;
+  padding: 5px 26px;
+  font-size: 15px;
   outline: ${(props) => {
     return props.isShow ? "5px auto -webkit-focus-ring-color" : "unset";
   }};
@@ -63,7 +68,6 @@ const S_HourlyWeatherItemSummary = styled.summary`
   display: flex;
   align-items: center;
   cursor: pointer;
-  transition: all .1s ease-in;
 
   span {
     margin-right: 6px;
@@ -87,7 +91,7 @@ const S_HourlyWeatherItemSummary = styled.summary`
 
   .weather__icon {
     margin-right: 10px;
-    width: 35px;
+    width: 45px;
   }
 
   .weather__icon img {
