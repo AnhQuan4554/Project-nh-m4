@@ -10,7 +10,7 @@ const Index = () => {
         <div className='big-container'>
             <div className='left-container'></div>
             <div className="forecast-box">
-                {/* <p><h1>Thời tiết 5 ngày</h1> - Thành phố Hà Nội</p> */}
+                <p><h1>Thời tiết 5 ngày</h1> - Thành phố Hà Nội</p>
                 <Accordion />
             </div>
             <div className="right-container"></div>
@@ -26,7 +26,10 @@ const S_Index = styled.div`
         display: flex;
         background-color: #59516e;
         background-image: linear-gradient(0deg,#e5dee2,#e5dee2 20%,#aba2b4 60%,#59516e 90%,#59516e);
+    }
 
+    .big-container h1{
+        display: inline-block;
     }
 
     .left-container{
@@ -35,7 +38,7 @@ const S_Index = styled.div`
     }
 
     .forecast-box{
-        width: 50%;
+        width: 60%;
         height: 100vh;
         border: 1px solid black;
         background-color: white;
