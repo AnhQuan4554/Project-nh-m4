@@ -11,7 +11,7 @@ const Nav = () => {
           <Link to="HourlyForecast">Hàng giờ </Link> {/* chỗ này để điền link */}
       </div>
       <div className="Navigate_link">
-        <Link to="">5 ngày </Link> {/* chỗ này để điền link */}
+        <Link to="Index">5 ngày </Link> {/* chỗ này để điền link */}
       </div>
     </S_Navigate>
   );

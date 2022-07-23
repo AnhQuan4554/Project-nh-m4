@@ -1,6 +1,5 @@
 import React,{useState,useEffect} from 'react'
 import{S_suggest} from'./Header_CSS'
-import{Test} from'./Header_CSS'
 const Input_suggest = ({setShowSuggest,apiFetch,setnameLocal,nameLocal}) => {
     const locals = localStorage.getItem('locations') ? JSON.parse(localStorage.getItem('locations')):[]
   
@@ -10,9 +9,7 @@ const Input_suggest = ({setShowSuggest,apiFetch,setnameLocal,nameLocal}) => {
          console.log('khi click thi nameLocal = ',nameLocal)
          setShowSuggest(false)
          nameLocal&& apiFetch()
-         setTimeout(()=>{
-            setnameLocal('')
-         },2000)
+     
         }
        /* xử lí local */
        

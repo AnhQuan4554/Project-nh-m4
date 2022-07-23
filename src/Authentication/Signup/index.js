@@ -35,6 +35,7 @@ const Signup = () => {
         signInWithPopup(auth, google)
         .then((respone) => {
             toast.success("success");
+          
             console.log(respone.user);
             sendSignInLinkToEmail(auth, respone.user.email, actionCodeSettings)
             .then(() => {

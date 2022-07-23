@@ -11,6 +11,9 @@ import Signup from "./Authentication/Signup";
 import AddToDo from "./pages/addTodo";
 import Planned from "./pages/planned";
 import HourlyForecast from "./components/HourlyForecast";
+import Index from "./components/Weekend_forecast/Index";
+
+
 const App = () => {
   const [inforWeather, setInforWeather] = useState(null);
   const [hourlyWeather, setHourlyWeather] = useState(null);
@@ -20,6 +23,7 @@ const App = () => {
     city: "",
     country: "",
   });
+
 
   useEffect(() => {
     if (navigator.geolocation) {
@@ -67,9 +71,10 @@ const App = () => {
         setInforWeather={setInforWeather}
         setHourlyWeather={setHourlyWeather}
       />
-      {/* <Nav/>
-      <Currently_day  inforWeather={inforWeather}/> */}
       <Nav />
+   
+
+
       <Routes>
         <Route
           path="/"
@@ -81,7 +86,9 @@ const App = () => {
             />
           }
         />
+        
         <Route path="/Login" element={<Login />} />
+        <Route path="/Signup" element={<Signup />} />
         <Route
           path="/HourlyForecast"
           element={
@@ -91,8 +98,10 @@ const App = () => {
             />
           }
         />
-        <Route path="/addtodo" element={<AddToDo />} />
-        <Route path="/planned" element={<Planned />} />
+         <Route path="/Index" element={< Index />} /> 
+    
+        {/* <Route path="/addtodo" element={<AddToDo />} />
+        <Route path="/planned" element={<Planned />} /> */}
       </Routes>
     </div>
   );

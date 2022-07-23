@@ -6,6 +6,7 @@ import {getAuth, signInWithEmailAndPassword, GoogleAuthProvider,signInWithPopup,
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../auth.css';
+
 const Login = () => {
     let auth = getAuth();
     let google = new GoogleAuthProvider();
@@ -31,7 +32,8 @@ const Login = () => {
         signInWithPopup(auth, google)
         .then((respone) => {
             toast.success("Login successfully!!!");
-            console.log(respone.user);
+             console.log(`đây là USEr trong`,respone.user);
+            // console.log('okokokokoko')
             sendSignInLinkToEmail(auth, respone.user.email, actionCodeSettings)
             .then(() => {
                 console.log("link sent successfully");
