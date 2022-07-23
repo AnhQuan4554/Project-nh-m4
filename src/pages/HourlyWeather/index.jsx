@@ -6,7 +6,7 @@ import HourlyWeatherFooter from "./Footer";
 import HourlyWeatherHeader from "./HourlyWeatherHeader";
 import HourlyWeatherList from "./HourlyWeatherList";
 
-const HourlyWeather = ({ inforWeather, hourlyWeather }) => {
+const HourlyWeather = ({ inforWeather, hourlyWeather,checkLogin }) => {
   const [uvIndex, setUvIndex] = useState(null);
   const [listInfo, setListInfo] = useState([]);
 
@@ -105,7 +105,8 @@ const HourlyWeather = ({ inforWeather, hourlyWeather }) => {
   };
 
   return (
-    <BodySection
+    <>
+    {checkLogin &&    <BodySection
       mainContent={[
         <HourlyWeatherHeader
           currentLocation={inforWeather && inforWeather.name}
@@ -114,7 +115,9 @@ const HourlyWeather = ({ inforWeather, hourlyWeather }) => {
         <HourlyWeatherList UVIndex={uvIndex} listInfo={listInfo} time={time} />,
         <HourlyWeatherFooter />,
       ]}
-    />
+    />}
+ 
+    </>
   );
 };
 

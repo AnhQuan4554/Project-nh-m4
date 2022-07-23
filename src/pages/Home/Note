@@ -1,0 +1,9 @@
+Trang chủ chính kho có dấu '/' này chính là file index.jsx trong home nó ở dưới header ý 
+nhưng do export là home
+
+** Thật ra làm cái check login hơi thừa đáng lẽ chỉ cần tối ưu khi mà có user.displayname là đủ rồi 
+mk sẽ tối ưu sau
+
+** Trong Home thì có Curently_day nó là cái của mình là 
+luôn luôn show kể cả ko đăng nhập , còn có 1 cái CurentWeather ở trong compponents 
+cái index ở trong home trong return của nó chứa cả Curentlt_day và CurentWeather ( thông tin chi tiết dưới cái cho xem thời tiết public)

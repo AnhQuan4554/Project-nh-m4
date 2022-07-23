@@ -6,12 +6,17 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 //link css
 import { S_Header, S_headLogo, S_headSearch, S_head_User } from "./Header_CSS";
 import Input_search from "./Input_search";
+import Header_withinLog from "./Header_withinLog";
 
 const Header = ({
   inforWeather,
   setInforWeather,
   currentLocation,
   setHourlyWeather,
+  checkLogin,
+  // user={user},
+  user,
+  setCheckLogin
 }) => {
   const unit = "metric"; // nếu muốn làm chức năng chọn đơn vị đo độ thì metric là độ C,
   const [nameLocal, setnameLocal] = useState("Hưng Yên"); // tên đia chỉ cần tìm
@@ -119,14 +124,15 @@ const Header = ({
           <FaSearchLocation />
         </div>
       </S_headSearch>
-      <S_head_User className="head_User">
+      {!checkLogin ? <S_head_User className="head_User">
         <div className="signIn">
           <Link to="Login">SIGN IN</Link> {/* chỗ này để điền link */}
         </div>
         <div className="signUp">
           <Link to="Signup">SIGN UP</Link> {/* chỗ này để điền link */}
         </div>
-      </S_head_User>
+      </S_head_User> : <Header_withinLog user={user} setCheckLogin={setCheckLogin} />}
+      
     </S_Header>
   );
 };
