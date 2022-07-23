@@ -3,15 +3,16 @@ import Accordion from './Accordion'
 import styled from 'styled-components';
 import React from 'react'
 
-const Index = () => {
+const Index = ({inforWeather}) => {
+
   return (
     <>
     <S_Index>
         <div className='big-container'>
             <div className='left-container'></div>
             <div className="forecast-box">
-                <p><h1>Thời tiết 5 ngày</h1> - Thành phố Hà Nội</p>
-                <Accordion />
+                <p><h1>Thời tiết 5 ngày</h1> - Thành phố {inforWeather && inforWeather.name && inforWeather.name}</p>
+                <Accordion inforWeather= {inforWeather} />
             </div>
             <div className="right-container"></div>
         </div>

@@ -57,9 +57,9 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   borderTop: "1px solid rgba(0, 0, 0, .125)",
 }));
 
-export default function CustomizedAccordions() {
+export default function CustomizedAccordions({inforWeather}) {
   const [expanded, setExpanded] = React.useState("panel1");
-
+  const city = inforWeather &&  inforWeather.name ? inforWeather.name :'Hưng Yên'
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
   };
@@ -78,8 +78,10 @@ export default function CustomizedAccordions() {
   const fetchForecast = async () => {
     try {
       const res = await fetch(
-        "https://api.openweathermap.org/data/2.5/forecast?q=Hanoi&lang=vi&appid=7929f327fc4a780215bc2a5b14f3fe24"
-      );
+        `https://api.openweathermap.org/data/2.5/forecast?q=${city}&lang=vi&appid=7929f327fc4a780215bc2a5b14f3fe24`
+        // "https://api.openweathermap.org/data/2.5/forecast?q=Hanoi&lang=vi&appid=7929f327fc4a780215bc2a5b14f3fe24"
+    
+        );
       const data = await res.json();
       setApi(data);
     } catch (error) {
@@ -172,10 +174,12 @@ export default function CustomizedAccordions() {
                 <div className="today">Hôm nay</div>{" "}
                 <div className="temp">
                   <strong>
-                    {api && Math.round(api.list[0].main.temp_max - 280)}
+                  
+                    {/* {api && Math.round(api.list[0].main.temp_max - 280)} */}
+                    {api && inforWeather.main.temp && Number(inforWeather.main.temp).toFixed(0)}
                     <TbTemperatureCelsius />
                   </strong>
-                  /{api && Math.round(api.list[0].main.temp_min - 280)}
+                  /{api && inforWeather.main.temp && Number(inforWeather.main.temp_max).toFixed(0)}
                   <TbTemperatureCelsius />
                 </div>{" "}
                 <div className="desc">

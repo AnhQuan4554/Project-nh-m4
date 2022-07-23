@@ -98,7 +98,7 @@ const App = () => {
             />
           }
         />
-         <Route path="/Index" element={< Index />} /> 
+         <Route path="/Index" element={< Index inforWeather={inforWeather} />} /> 
     
         {/* <Route path="/addtodo" element={<AddToDo />} />
         <Route path="/planned" element={<Planned />} /> */}
