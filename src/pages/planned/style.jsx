@@ -1,10 +1,9 @@
 import styled from "styled-components";
 
 export const SPlanned = styled.div`
-margin-top: -230px;
-height: 100vh;
 display: flex;
 justify-content: center;
+margin-top: 100px;
 .header{
    
    position: absolute;
@@ -16,8 +15,8 @@ justify-content: center;
 .container{
     border-radius: 16px;
     position: relative;
-   
-    height: 70vh;
+    margin-top: 32px;
+    height: 50vh;
     background-color: #FFFFFF;
   
 }
@@ -33,6 +32,7 @@ justify-content: center;
 .content-container{
     width: 100%;
    position: absolute;
+   height: 30vh;
    top: 12vh;
    overflow: scroll;
    overflow-x:hidden;
@@ -40,7 +40,7 @@ justify-content: center;
     width: 6px;
     background-color: #F5F5F5;
 } 
-    height: 50vh;
+  
     margin-top: 16px;
     .circle{
         background-color: #00B4FE;
@@ -59,25 +59,28 @@ justify-content: center;
             margin-left: 16px;
             display: flex;
             justify-content: space-between;
-            button{
+         
+            .done{
+                font-size: 14px;
+                width: 75px;
+                height: 26px;
                 margin: auto;
+                cursor: pointer;
                 background-color: #36BE7C;
                 border: none;
                 border-radius: 16px;
-                padding: 6px 22px;
+                padding: 0px 16px;
                 color: white;
                 margin-right: 20%;
-            
                 &:hover{
-                    background-color: #07d371;
+                    background-color: red;
                     transition: 0.5s;
-                    cursor: pointer;
                 }
             }
         }
         .content{
              width: 100%;
-            font-size: 14px;
+            font-size: 15px;
             color: #aaa5a5;
             margin-left: 16px;
             width: 100%;
