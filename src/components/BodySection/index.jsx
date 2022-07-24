@@ -39,7 +39,7 @@ const S_BodySection = styled.section`
   }
 
   .right__content {
-    width: 100% - 800px;
+    /* width: 100% - 800px; */
     border-radius: 6px;
     margin-left: 20px;
   }

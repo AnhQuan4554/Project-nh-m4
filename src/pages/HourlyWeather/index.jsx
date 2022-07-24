@@ -6,7 +6,7 @@ import HourlyWeatherFooter from "./Footer";
 import HourlyWeatherHeader from "./HourlyWeatherHeader";
 import HourlyWeatherList from "./HourlyWeatherList";
 
-const HourlyWeather = ({ inforWeather, hourlyWeather,checkLogin }) => {
+const HourlyWeather = ({ inforWeather, hourlyWeather, checkLogin }) => {
   const [uvIndex, setUvIndex] = useState(null);
   const [listInfo, setListInfo] = useState([]);
 
@@ -106,17 +106,35 @@ const HourlyWeather = ({ inforWeather, hourlyWeather,checkLogin }) => {
 
   return (
     <>
-    {checkLogin &&    <BodySection
-      mainContent={[
-        <HourlyWeatherHeader
-          currentLocation={inforWeather && inforWeather.name}
-          accessTime={`${today.hour}:${today.minute}`}
-        />,
-        <HourlyWeatherList UVIndex={uvIndex} listInfo={listInfo} time={time} />,
-        <HourlyWeatherFooter />,
-      ]}
-    />}
- 
+      {checkLogin ? (
+        <BodySection
+          mainContent={[
+            <HourlyWeatherHeader
+              currentLocation={inforWeather && inforWeather.name}
+              accessTime={`${today.hour}:${today.minute}`}
+            />,
+            <HourlyWeatherList
+              UVIndex={uvIndex}
+              listInfo={listInfo}
+              time={time}
+            />,
+            <HourlyWeatherFooter />,
+          ]}
+        />
+      ) : (
+        <div
+          style={{
+            height: "100vh",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            fontSize: "30px",
+            fontWeight: "bold",
+          }}
+        >
+          Bạn phải đăng nhập để sử dụng tính năng này!
+        </div>
+      )}
     </>
   );
 };
