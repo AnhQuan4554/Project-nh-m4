@@ -68,11 +68,9 @@ const CurrentWeather = ({ inforWeather }) => {
       ? Number(inforWeather.wind.speed * 3.6).toFixed(1)
       : "--";
 
-  // chỉ số chất lượng không khí
+  // Chỉ số UV
   const lat = inforWeather && inforWeather.coord && inforWeather.coord.lat;
   const lon = inforWeather && inforWeather.coord && inforWeather.coord.lon;
-
-  // Chỉ số UV
   const [uvIndex, setUvIndex] = useState(null);
   const [textColor, setTextColor] = useState("");
 

@@ -11,6 +11,7 @@ import Signup from "./Authentication/Signup";
 import AddToDo from "./pages/addTodo";
 import Planned from "./pages/planned";
 import HourlyForecast from "./components/HourlyForecast";
+import Footer from "./Footer";
 const App = () => {
   const [inforWeather, setInforWeather] = useState(null);
   const [hourlyWeather, setHourlyWeather] = useState(null);
@@ -94,6 +95,7 @@ const App = () => {
         <Route path="/addtodo" element={<AddToDo />} />
         <Route path="/planned" element={<Planned />} />
       </Routes>
+      <Footer />
     </div>
   );
 };

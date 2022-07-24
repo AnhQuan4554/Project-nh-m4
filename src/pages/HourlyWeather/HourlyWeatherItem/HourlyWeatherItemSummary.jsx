@@ -38,9 +38,9 @@ const HourlyWeatherItemSummary = ({
         </p>
       </span>
       <span className="rain-volumne">
-        <div className="rain-volumne__icon">
+        <span className="rain-volumne__icon">
           <GiHeavyRain style={{ color: "#6adef8" }} />
-        </div>
+        </span>
         {rainVolumne}mm
       </span>
       <span className="wind">
@@ -99,9 +99,10 @@ const S_HourlyWeatherItemSummary = styled.summary`
   }
 
   .rain-volumne {
-    flex-basis: 60px;
+    flex-basis: 72px;
     display: flex;
     align-items: center;
+    justify-content: space-evenly;
   }
 
   .wind__icon,
