@@ -19,6 +19,7 @@ const BodySection = ({ rightContent = [], mainContent }) => {
             {item}
           </div>
         ))}
+        
       </div>
     </S_BodySection>
   );

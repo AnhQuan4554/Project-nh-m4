@@ -51,10 +51,9 @@ export const S_contentCurrently = styled.div`
   }
   .header_img {
     position: absolute;
-
     right: 20%;
     img {
-      width: 100%;
+      width: 200px;
     }
   }
 `;

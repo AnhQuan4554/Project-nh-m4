@@ -8,12 +8,11 @@ import {
   S_contentCurrently,
 } from "./Currently_CSS";
 const Currently_day = ({ inforWeather }) => {
-  console.log(inforWeather, "ở curenday");
-  const temp = inforWeather && inforWeather.main && inforWeather.main.temp;
+  const temp = inforWeather && inforWeather.main && Number(inforWeather.main.temp).toFixed(0);
   const tempMin =
-    inforWeather && inforWeather.main && inforWeather.main.temp_min;
+    inforWeather && inforWeather.main && Number(inforWeather.main.temp_min).toFixed(0);
   const tempMax =
-    inforWeather && inforWeather.main && inforWeather.main.temp_max;
+    inforWeather && inforWeather.main && Number(inforWeather.main.temp_max).toFixed(0);
   const icon =
     inforWeather && inforWeather.main && inforWeather.weather[0].icon;
   if (!temp && !tempMin && !tempMax && !icon) return <h1>NO DATA</h1>;

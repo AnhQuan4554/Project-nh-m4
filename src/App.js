@@ -12,15 +12,21 @@ import AddToDo from "./pages/addTodo";
 import Planned from "./pages/planned";
 import HourlyForecast from "./components/HourlyForecast";
 import Footer from "./Footer";
+import Index from "./components/Weekend_forecast/Index";
+
+
 const App = () => {
   const [inforWeather, setInforWeather] = useState(null);
   const [hourlyWeather, setHourlyWeather] = useState(null);
+  const [checkLogin, setCheckLogin] = useState(false) // kiểm tra xem đã đăng nhập thành công hay chưa
+  const [user, setUser] = useState(null) //thông tin người đăng nhập (bao gồm tên email và nhiều thứ ở trong mục của login)
   /*  xử lí địa điểm lúc đăng nhập  */
   const [currentLocation, setCurrentLocation] = useState({
     // currentLocation là tên thành phố và quốc giá
     city: "",
     country: "",
   });
+
 
   useEffect(() => {
     if (navigator.geolocation) {
@@ -67,10 +73,14 @@ const App = () => {
         inforWeather={inforWeather}
         setInforWeather={setInforWeather}
         setHourlyWeather={setHourlyWeather}
+        checkLogin={checkLogin}
+        user={user}
+        setCheckLogin={setCheckLogin}
       />
-      {/* <Nav/>
-      <Currently_day  inforWeather={inforWeather}/> */}
       <Nav />
+   
+
+
       <Routes>
         <Route
           path="/"
@@ -79,21 +89,28 @@ const App = () => {
               currentLocation={currentLocation}
               inforWeather={inforWeather}
               setInforWeather={setInforWeather}
+              checkLogin={checkLogin}
+
             />
           }
         />
-        <Route path="/Login" element={<Login />} />
+        
+        <Route path="/Login" element={<Login checkLogin={checkLogin} setCheckLogin={setCheckLogin} setUser={setUser}/>} />
+        <Route path="/Signup" element={<Signup checkLogin={checkLogin} setCheckLogin={setCheckLogin} setUser={setUser} />} />
         <Route
           path="/HourlyForecast"
           element={
             <HourlyWeather
               inforWeather={inforWeather}
               hourlyWeather={hourlyWeather}
+              checkLogin = {checkLogin}
             />
           }
-        />
-        <Route path="/addtodo" element={<AddToDo />} />
-        <Route path="/planned" element={<Planned />} />
+        /> 
+         <Route path="/Index" element={< Index inforWeather={inforWeather} />} /> {/*  đây là 5 ngày */}
+    
+        {/* <Route path="/addtodo" element={<AddToDo />} />
+        <Route path="/planned" element={<Planned />} /> */}
       </Routes>
       <Footer />
     </div>

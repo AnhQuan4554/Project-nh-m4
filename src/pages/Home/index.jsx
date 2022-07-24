@@ -15,22 +15,26 @@ const Home = ({
   setInforWeather,
   hourlyWeather,
   setHourlyWeather,
+  checkLogin
 }) => {
   return (
     <>
-      {/* <Header currentLocation={currentLocation} inforWeather={inforWeather} setInforWeather = {setInforWeather}/> */}
-      {/* <Nav /> */}
-
-      <BodySection
-        mainContent={[
+       <BodySection
+    /* nếu đăng nhập thì mảng có 2 phần tử nếu ko chỉ có 1  */
+    
+        mainContent=  { [
           <Currently_day inforWeather={inforWeather} />,
           <CurrentWeather
             inforWeather={inforWeather}
             setHourlyWeather={setHourlyWeather}
           />,
-        ]}
+        ] }
         rightContent={[<AddToDo />, <Planned />]} // bao giờ cho lịch vào cái này
-      />
+        />  
+       
+        
+
+
     </>
   );
 };

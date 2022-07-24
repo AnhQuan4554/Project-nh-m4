@@ -96,16 +96,16 @@ export const S_Navigate = styled.div`
     }
   }
 `;
+
 export const S_suggest = styled.ul`
-  width: 370px;
-  background-color: #fff;
+ width: 370px;
+  background-color: #dfdddd;
   position: absolute;
   top: 100%;
   left: 0;
   overflow: hidden;
   border-radius: 10px;
   z-index: 10;
-  display: none;
   li {
     padding: 10px 35px;
     margin-bottom: 5px;

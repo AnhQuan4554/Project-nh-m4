@@ -6,7 +6,9 @@ import {getAuth, signInWithEmailAndPassword, GoogleAuthProvider,signInWithPopup,
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../auth.css';
+import { useNavigate } from "react-router-dom"; 
 const Signup = () => {
+    let navigate = useNavigate();//để quay về trang chủ
     let auth = getAuth();
     let google = new GoogleAuthProvider();
     const [data, setData] = useState({
@@ -22,6 +24,8 @@ const Signup = () => {
             createUserWithEmailAndPassword(auth, data.email, data.password)
             .then((respone) => {
                 toast.success("success");
+             navigate("../", { replace: true });// nếu đăng nhập được quay về trang chủ 
+
             })
             .catch((error) => {
                 toast.error(error.message);
@@ -35,10 +39,13 @@ const Signup = () => {
         signInWithPopup(auth, google)
         .then((respone) => {
             toast.success("success");
+            navigate("../", { replace: true });// nếu đăng nhập được quay về trang chủ 
+          
             console.log(respone.user);
             sendSignInLinkToEmail(auth, respone.user.email, actionCodeSettings)
             .then(() => {
                 console.log("link sent successfully");
+
             })
             .catch((error) => {
                 console.log(error.message);

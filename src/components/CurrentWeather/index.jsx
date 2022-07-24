@@ -17,7 +17,7 @@ const CurrentWeather = ({ inforWeather }) => {
   // Temperature
   const temperature =
     inforWeather && inforWeather.main && inforWeather.main["feels_like"]
-      ? Math.round(Number(inforWeather.main["feels_like"]))
+      ? Math.round(Number(inforWeather.main.temp))  // cho đồng nhất với cả header
       : "--";
   const temperatureMin =
     inforWeather && inforWeather.main && inforWeather.main["temp_min"]
