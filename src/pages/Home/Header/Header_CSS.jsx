@@ -19,6 +19,11 @@ export const S_headLogo = styled.div`
   .imgLogo {
     font-size: 50px;
     color: #fff;
+    transition: all 1s;
+    &:hover{
+      transform: rotate(360deg);
+      
+    }
   }
 `;
 export const S_headSearch = styled.div`

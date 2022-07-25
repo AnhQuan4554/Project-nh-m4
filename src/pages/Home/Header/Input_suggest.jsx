@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react'
 import{S_suggest} from'./Header_CSS'
-const Input_suggest = ({setShowSuggest,apiFetch,setnameLocal,nameLocal}) => {
+const Input_suggest = ({setShowSuggest,apiFetch,setnameLocal,nameLocal,handleFocus}) => {
     const locals = localStorage.getItem('locations') ? JSON.parse(localStorage.getItem('locations')):[]
   
     const handleClick = (e)=>{ 
@@ -9,7 +9,7 @@ const Input_suggest = ({setShowSuggest,apiFetch,setnameLocal,nameLocal}) => {
          console.log('khi click thi nameLocal = ',nameLocal)
          setShowSuggest(false)
          nameLocal&& apiFetch()
-     
+        // handleFocus()
         }
        /* xử lí local */
        

@@ -106,7 +106,7 @@ const HourlyWeather = ({ inforWeather, hourlyWeather,checkLogin }) => {
 
   return (
     <>
-    {checkLogin &&    <BodySection
+    {checkLogin ?    <BodySection
       mainContent={[
         <HourlyWeatherHeader
           currentLocation={inforWeather && inforWeather.name}
@@ -115,10 +115,14 @@ const HourlyWeather = ({ inforWeather, hourlyWeather,checkLogin }) => {
         <HourlyWeatherList UVIndex={uvIndex} listInfo={listInfo} time={time} />,
         <HourlyWeatherFooter />,
       ]}
-    />}
+    /> :<ContentSugget>Bạn cần đăng nhập để xem thêm thông tin chi tiết</ContentSugget> }
  
     </>
   );
 };
 
 export default HourlyWeather;
+const ContentSugget =styled.h1`
+    margin-top: 150px;
+    text-align: center;
+`

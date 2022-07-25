@@ -7,3 +7,4 @@ mk sẽ tối ưu sau
 ** Trong Home thì có Curently_day nó là cái của mình là 
 luôn luôn show kể cả ko đăng nhập , còn có 1 cái CurentWeather ở trong compponents 
 cái index ở trong home trong return của nó chứa cả Curentlt_day và CurentWeather ( thông tin chi tiết dưới cái cho xem thời tiết public)
+***** BodySection cái trong đấy là mảng , và mảng đó là prop được truyền vào CurentWeather
