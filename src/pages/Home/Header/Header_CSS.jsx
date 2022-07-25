@@ -98,7 +98,7 @@ export const S_Navigate = styled.div`
 `;
 
 export const S_suggest = styled.ul`
- width: 370px;
+  width: 370px;
   background-color: #dfdddd;
   position: absolute;
   top: 100%;

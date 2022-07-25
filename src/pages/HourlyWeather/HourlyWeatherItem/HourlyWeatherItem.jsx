@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 import { CgInfinity } from "react-icons/cg";
@@ -17,8 +17,13 @@ const HourlyWeatherItem = ({
   humidity = <CgInfinity />,
   visibility = <CgInfinity />,
   cloud = <CgInfinity />,
+  index,
 }) => {
   const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    if (index === 0) setShow(true);
+  }, []);
 
   return (
     <S_HourlyWeatherItem>

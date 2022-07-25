@@ -1,7 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import AddToDo from "../../pages/addTodo";
-import Planned from "../../pages/planned";
 const BodySection = ({ rightContent = [], mainContent }) => {
   return (
     <S_BodySection>
@@ -19,7 +17,6 @@ const BodySection = ({ rightContent = [], mainContent }) => {
             {item}
           </div>
         ))}
-        
       </div>
     </S_BodySection>
   );
@@ -30,8 +27,8 @@ export default BodySection;
 const S_BodySection = styled.section`
   max-width: 100%;
   margin-top: 15px;
-  margin-left: 165px;
   display: flex;
+  justify-content: center;
 
   .main__content {
     width: 800px;
@@ -39,7 +36,7 @@ const S_BodySection = styled.section`
   }
 
   .right__content {
-    /* width: 100% - 800px; */
+    min-width: 20%;
     border-radius: 6px;
     margin-left: 20px;
   }

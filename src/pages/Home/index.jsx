@@ -14,27 +14,27 @@ const Home = ({
   currentLocation,
   setInforWeather,
   hourlyWeather,
-  setHourlyWeather,
-  checkLogin
+  checkLogin,
 }) => {
   return (
     <>
-       <BodySection
-    /* nếu đăng nhập thì mảng có 2 phần tử nếu ko chỉ có 1  */
-    
-        mainContent=  { [
-          <Currently_day inforWeather={inforWeather} />,
-          <CurrentWeather
-            inforWeather={inforWeather}
-            setHourlyWeather={setHourlyWeather}
-          />,
-        ] }
+      <BodySection
+        /* nếu đăng nhập thì mảng có 2 phần tử nếu ko chỉ có 1  */
+
+        mainContent={
+          checkLogin
+            ? [
+                <Currently_day inforWeather={inforWeather} />,
+                <CurrentWeather inforWeather={inforWeather} />,
+                <HourlyForecast hourlyWeather={hourlyWeather} />,
+              ]
+            : [
+                <Currently_day inforWeather={inforWeather} />,
+                <CurrentWeather inforWeather={inforWeather} />,
+              ]
+        }
         rightContent={[<AddToDo />, <Planned />]} // bao giờ cho lịch vào cái này
-        />  
-       
-        
-
-
+      />
     </>
   );
 };

@@ -1,15 +1,14 @@
 import React, { memo, useEffect } from "react";
-import moment from "moment";
 import styled from "styled-components";
 
 import { HiSun } from "react-icons/hi";
 
 const SunClock = ({ sunrise, sunset }) => {
   // đổi từ string sang phút để tính toán
-  const sunriseHour = sunrise ? Number(sunrise[0]) : 0;
-  const sunriseMinute = sunrise ? Number(sunrise.slice(2)) : 0;
-  const sunsetHour = sunset ? Number(sunset[0]) : 0;
-  const sunsetMinute = sunset ? Number(sunset.slice(2)) : 0;
+  const sunriseHour = sunrise ? Number(sunrise.split(":")[0]) : 0;
+  const sunriseMinute = sunrise ? Number(sunrise.split(":")[1]) : 0;
+  const sunsetHour = sunset ? Number(sunset.split(":")[0]) : 0;
+  const sunsetMinute = sunset ? Number(sunset.split(":")[1]) : 0;
   const sunriseTime = sunriseHour * 60 + sunriseMinute;
   const sunsetTime = sunsetHour * 60 + sunsetMinute;
 
@@ -20,8 +19,6 @@ const SunClock = ({ sunrise, sunset }) => {
   const currentTime = nowHour * 60 + nowMinute;
   const now =
     (currentTime <= sunsetTime ? currentTime : sunsetTime) - sunriseTime;
-
-  // console.log(now, "ở SunClock");
 
   const time = sunsetTime - sunriseTime;
   const anglePerMinute = 180 / time;
