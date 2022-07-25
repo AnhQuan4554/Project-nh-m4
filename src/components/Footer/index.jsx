@@ -61,7 +61,7 @@ const Footer = () => {
           </div>
         </section>
         <section className="footer">
-          Powered by
+          Provided by
           <a href="https://openweathermap.org" target="_blank">
             <img src="https://openweathermap.org/themes/openweathermap/assets/img/logo_white_cropped.png" />
           </a>
