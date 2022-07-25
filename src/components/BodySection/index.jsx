@@ -26,6 +26,7 @@ export default BodySection;
 
 const S_BodySection = styled.section`
   max-width: 100%;
+  min-height: 500px;
   margin-top: 15px;
   display: flex;
   justify-content: center;

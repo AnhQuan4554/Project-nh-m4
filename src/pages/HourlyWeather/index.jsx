@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import styled from "styled-components";
 
 import BodySection from "../../components/BodySection";
 import HourlyWeatherFooter from "./Footer";
@@ -80,7 +79,7 @@ const HourlyWeather = ({ inforWeather, hourlyWeather, checkLogin }) => {
       console.log(temp, "temp o hourly weather");
 
       if (temp.getDate() > today.date) {
-        indexOfEndWeather = i-1;
+        indexOfEndWeather = i - 1;
         break;
       }
     }
@@ -95,21 +94,21 @@ const HourlyWeather = ({ inforWeather, hourlyWeather, checkLogin }) => {
 
   return (
     <>
-      {/* {checkLogin ? ( */}
-      <BodySection
-        mainContent={[
-          <HourlyWeatherHeader
-            currentLocation={inforWeather && inforWeather.name}
-            accessTime={`${today.hour}:${today.minute}`}
-          />,
-          <HourlyWeatherList listInfo={listInfo} time={time} />,
-          <HourlyWeatherFooter />,
-        ]}
-      />
-      {/* ) : (
+      {checkLogin ? (
+        <BodySection
+          mainContent={[
+            <HourlyWeatherHeader
+              currentLocation={inforWeather && inforWeather.name}
+              accessTime={`${today.hour}:${today.minute}`}
+            />,
+            <HourlyWeatherList listInfo={listInfo} time={time} />,
+            <HourlyWeatherFooter />,
+          ]}
+        />
+      ) : (
         <div
           style={{
-            height: "100vh",
+            minHeight: "500px",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -119,7 +118,7 @@ const HourlyWeather = ({ inforWeather, hourlyWeather, checkLogin }) => {
         >
           Bạn phải đăng nhập để sử dụng tính năng này!
         </div>
-      )} */}
+      )}
     </>
   );
 };
