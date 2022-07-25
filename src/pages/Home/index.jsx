@@ -14,8 +14,8 @@ const Home = ({
   currentLocation,
   setInforWeather,
   hourlyWeather,
-  setHourlyWeather,
-  checkLogin
+  checkLogin,
+  setHourlyWeather
 }) => {
   return (
     <>

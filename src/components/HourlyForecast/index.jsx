@@ -5,12 +5,7 @@ import { Link } from "react-router-dom";
 import HourlyForecastCard from "./HourlyForecastCard";
 import Button from "../Button";
 
-const HourlyForecast = ({
-  inforWeather,
-  hourlyWeather,
-  setHourlyWeather,
-  unit = "metric",
-}) => {
+const HourlyForecast = ({ hourlyWeather }) => {
   console.log(hourlyWeather, "o hourly weather");
 
   const [weatherList, setWeatherList] = useState([]);
@@ -24,52 +19,51 @@ const HourlyForecast = ({
   // Lấy tọa độ địa điểm
 
   // Call API 3 giờ
-  const lat = inforWeather && inforWeather.coord && inforWeather.coord.lat;
-  const lon = inforWeather && inforWeather.coord && inforWeather.coord.lon;
+  // const lat = inforWeather && inforWeather.coord && inforWeather.coord.lat;
+  // const lon = inforWeather && inforWeather.coord && inforWeather.coord.lon;
 
-  const getHourForecast = async () => {
-    try {
-      const hourForecastRes = await fetch(
-        `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=7929f327fc4a780215bc2a5b14f3fe24&units=${unit}&lang=vi`
-      );
-      const hourForecast = await hourForecastRes.json();
-      setHourlyWeather(hourForecast);
-      console.log(hourForecast);
-    } catch {
-      alert(
-        "Oops! Something went wrong with the forecast. Please try again later."
-      );
-    }
-  };
+  // const getHourForecast = async () => {
+  //   try {
+  //     const hourForecastRes = await fetch(
+  //       `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=7929f327fc4a780215bc2a5b14f3fe24&units=${unit}&lang=vi`
+  //     );
+  //     const hourForecast = await hourForecastRes.json();
+  //     setHourlyWeather(hourForecast);
+  //     // console.log(hourForecast);
+  //   } catch {
+  //     alert(
+  //       "Oops! Something went wrong with the forecast. Please try again later."
+  //     );
+  //   }
+  // };
 
   // Xử lý dữ liệu
   const handlerForecastData = () => {
     let indexOfWeather = 0;
     for (let i = 0; i < hourlyWeather.list.length; i++) {
       const temp = new Date(hourlyWeather.list[i]["dt_txt"]);
-      console.log(temp.getHours(), temp.getDate(), "hehe temp ne");
-      if (weatherList.length <= 5 && temp.getDate() == nowDate) {
+      if (temp.getDate() == nowDate) {
         if (temp.getHours() > nowHour) {
           indexOfWeather = i - 1;
-          console.log(hourlyWeather.list[i], "kẻ khờ mù quáng");
           break;
         }
       }
     }
-    console.log("có vô đây nhá", indexOfWeather);
-    const temppppp = [];
+    // console.log("có vô đây nhá", indexOfWeather);
+    const tempArr = [];
     for (let i = indexOfWeather; i < indexOfWeather + 5; i++) {
-      temppppp.push(hourlyWeather.list[i]);
+      tempArr.push(hourlyWeather.list[i]);
     }
-    setWeatherList(temppppp);
+    setWeatherList(tempArr);
   };
 
   useEffect(() => {
     // getHourForecast();
-    console.log("heheheh", lat, lon);
+    // console.log("heheheh", lat, lon);
     hourlyWeather && handlerForecastData();
     console.log(weatherList, "weatherList");
   }, [hourlyWeather]);
+  console.log(weatherList, "weatherList");
 
   return (
     <S_HourlyForecast key="HourlyForecast">
@@ -91,8 +85,8 @@ const HourlyForecast = ({
             );
           })}
       </ul>
-      <Link to="/hourly">
-        <Button text="48 Giờ tới" />
+      <Link to="/HourlyForecast">
+        <Button text="Những giờ tới" />
       </Link>
     </S_HourlyForecast>
   );

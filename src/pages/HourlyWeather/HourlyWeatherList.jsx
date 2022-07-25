@@ -5,7 +5,7 @@ import { CgInfinity } from "react-icons/cg";
 
 import HourlyWeatherItem from "./HourlyWeatherItem/HourlyWeatherItem";
 
-const HourlyWeatherList = ({time, listInfo }) => {
+const HourlyWeatherList = ({ time, listInfo }) => {
   console.log(listInfo, "ở hour list");
 
   return (
@@ -27,6 +27,7 @@ const HourlyWeatherList = ({time, listInfo }) => {
               cloud={info.clouds.all}
               visibility={(Number(info.visibility) / 1000).toFixed(1)}
               key={index}
+              index={index}
             />
           );
         })}

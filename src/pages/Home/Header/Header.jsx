@@ -16,7 +16,7 @@ const Header = ({
   checkLogin,
   // user={user},
   user,
-  setCheckLogin
+  setCheckLogin,
 }) => {
   const unit = "metric"; // nếu muốn làm chức năng chọn đơn vị đo độ thì metric là độ C,
   const [nameLocal, setnameLocal] = useState("Hưng Yên"); // tên đia chỉ cần tìm
@@ -127,15 +127,18 @@ const Header = ({
           <FaSearchLocation style={{cursor:'pointer'}} onClick={searchWeather} />
         </div>
       </S_headSearch>
-      {!checkLogin ? <S_head_User className="head_User">
-        <div className="signIn">
-          <Link to="Login">SIGN IN</Link> {/* chỗ này để điền link */}
-        </div>
-        <div className="signUp">
-          <Link to="Signup">SIGN UP</Link> {/* chỗ này để điền link */}
-        </div>
-      </S_head_User> : <Header_withinLog user={user} setCheckLogin={setCheckLogin} />}
-      
+      {!checkLogin ? (
+        <S_head_User className="head_User">
+          <div className="signIn">
+            <Link to="Login">SIGN IN</Link> {/* chỗ này để điền link */}
+          </div>
+          <div className="signUp">
+            <Link to="Signup">SIGN UP</Link> {/* chỗ này để điền link */}
+          </div>
+        </S_head_User>
+      ) : (
+        <Header_withinLog user={user} setCheckLogin={setCheckLogin} />
+      )}
     </S_Header>
   );
 };

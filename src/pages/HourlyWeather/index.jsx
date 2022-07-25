@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
-import styled from "styled-components";
+import styled from 'styled-components';
 
 import BodySection from "../../components/BodySection";
 import HourlyWeatherFooter from "./Footer";
 import HourlyWeatherHeader from "./HourlyWeatherHeader";
 import HourlyWeatherList from "./HourlyWeatherList";
 
-const HourlyWeather = ({ inforWeather, hourlyWeather,checkLogin }) => {
-  const [uvIndex, setUvIndex] = useState(null);
+const HourlyWeather = ({ inforWeather, hourlyWeather, checkLogin }) => {
   const [listInfo, setListInfo] = useState([]);
 
   const lat = inforWeather && inforWeather.coord && inforWeather.coord.lat;
@@ -46,7 +45,7 @@ const HourlyWeather = ({ inforWeather, hourlyWeather,checkLogin }) => {
         time.day = "Thứ tư";
         break;
       case 4:
-        time.day = "Thú năm";
+        time.day = "Thứ năm";
         break;
       case 5:
         time.day = "Thứ sáu";
@@ -60,22 +59,8 @@ const HourlyWeather = ({ inforWeather, hourlyWeather,checkLogin }) => {
   handleTime();
 
   useEffect(() => {
-    // uvHandler();
     hourlyWeather && handlerForecastData();
   }, [lat, lon, hourlyWeather]);
-
-  const uvHandler = async () => {
-    try {
-      const uvRes = await fetch(
-        `http://api.weatherstack.com/current?access_key=957281ed3799898a35f4317c80174954&units=m&query=${lat},${lon}`
-      );
-      const uvData = await uvRes.json();
-      console.log(uvData, "uv data");
-      setUvIndex(uvData && uvData.current ? uvData.current["uv_index"] : "--");
-    } catch {
-      alert("wrong api");
-    }
-  };
 
   const handlerForecastData = () => {
     let indexOfStartWeather = 0;
@@ -83,6 +68,7 @@ const HourlyWeather = ({ inforWeather, hourlyWeather,checkLogin }) => {
     console.log(today, "hahah to day");
     for (let i = 0; i < hourlyWeather.list.length; i++) {
       const temp = new Date(hourlyWeather.list[i]["dt_txt"]);
+      // console.log(temp, "temp o hourly weather")
       if (temp.getDate() == today.date)
         if (temp.getHours() > today.hour) {
           indexOfStartWeather = i - 1;
@@ -91,8 +77,10 @@ const HourlyWeather = ({ inforWeather, hourlyWeather,checkLogin }) => {
     }
     for (let i = 0; i < hourlyWeather.list.length; i++) {
       const temp = new Date(hourlyWeather.list[i]["dt_txt"]);
-      if (temp.getDate() != today.date) {
-        indexOfEndWeather = i;
+      console.log(temp, "temp o hourly weather");
+
+      if (temp.getDate() > today.date) {
+        indexOfEndWeather = i - 1;
         break;
       }
     }
@@ -101,22 +89,37 @@ const HourlyWeather = ({ inforWeather, hourlyWeather,checkLogin }) => {
     for (let i = indexOfStartWeather; i <= indexOfEndWeather; i++) {
       template.push(hourlyWeather.list[i]);
     }
+    console.log(template, "mangr owr hourly weahter");
     setListInfo(template);
   };
 
   return (
     <>
-    {checkLogin ?    <BodySection
-      mainContent={[
-        <HourlyWeatherHeader
-          currentLocation={inforWeather && inforWeather.name}
-          accessTime={`${today.hour}:${today.minute}`}
-        />,
-        <HourlyWeatherList UVIndex={uvIndex} listInfo={listInfo} time={time} />,
-        <HourlyWeatherFooter />,
-      ]}
-    /> :<ContentSugget>Bạn cần đăng nhập để xem thêm thông tin chi tiết</ContentSugget> }
- 
+      {checkLogin ? (
+        <BodySection
+          mainContent={[
+            <HourlyWeatherHeader
+              currentLocation={inforWeather && inforWeather.name}
+              accessTime={`${today.hour}:${today.minute}`}
+            />,
+            <HourlyWeatherList listInfo={listInfo} time={time} />,
+            <HourlyWeatherFooter />,
+          ]}
+        />
+      ) : (
+        <div
+          style={{
+            minHeight: "500px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            fontSize: "30px",
+            fontWeight: "bold",
+          }}
+        >
+          Bạn phải đăng nhập để sử dụng tính năng này!
+        </div>
+      )}
     </>
   );
 };

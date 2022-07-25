@@ -1,16 +1,14 @@
 import React, { memo, useEffect } from "react";
-import moment from "moment";
 import styled from "styled-components";
 
 import { HiSun } from "react-icons/hi";
 
 const SunClock = ({ sunrise, sunset }) => {
-
   // đổi từ string sang phút để tính toán
-  const sunriseHour = sunrise && Number(sunrise[0]);
-  const sunriseMinute = sunrise && Number(sunrise.slice(2));
-  const sunsetHour = sunrise && Number(sunset[0]);
-  const sunsetMinute = sunrise && Number(sunset.slice(2));
+  const sunriseHour = sunrise ? Number(sunrise.split(":")[0]) : 0;
+  const sunriseMinute = sunrise ? Number(sunrise.split(":")[1]) : 0;
+  const sunsetHour = sunset ? Number(sunset.split(":")[0]) : 0;
+  const sunsetMinute = sunset ? Number(sunset.split(":")[1]) : 0;
   const sunriseTime = sunriseHour * 60 + sunriseMinute;
   const sunsetTime = sunsetHour * 60 + sunsetMinute;
 
@@ -19,14 +17,13 @@ const SunClock = ({ sunrise, sunset }) => {
   const nowHour = nowTime.getHours();
   const nowMinute = nowTime.getMinutes();
   const currentTime = nowHour * 60 + nowMinute;
-  const now = (currentTime <= sunsetTime ? currentTime : sunsetTime) - sunriseTime;
-
-  // console.log(now, "ở SunClock");
+  const now =
+    (currentTime <= sunsetTime ? currentTime : sunsetTime) - sunriseTime;
 
   const time = sunsetTime - sunriseTime;
   const anglePerMinute = 180 / time;
   const angle = now <= time ? anglePerMinute * now : 180;
-  const cx = 50 * Math.cos((angle * Math.PI) / 180);
+  const cx = sunrise ? 50 * Math.cos((angle * Math.PI) / 180) : 0;
   const cy = Math.sqrt(50 * 50 - cx * cx);
 
   return (

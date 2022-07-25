@@ -12,14 +12,14 @@ import AddToDo from "./pages/addTodo";
 import Planned from "./pages/planned";
 import HourlyForecast from "./components/HourlyForecast";
 import Index from "./components/FiveDay_forecast/Index";
-import HourlyWeatherFooter from "./pages/HourlyWeather/Footer";
+import Footer from "./components/Footer";
 
 
 const App = () => {
   const [inforWeather, setInforWeather] = useState(null);
   const [hourlyWeather, setHourlyWeather] = useState(null);
-  const [checkLogin, setCheckLogin] = useState(false) // kiểm tra xem đã đăng nhập thành công hay chưa
-  const [user, setUser] = useState(null) //thông tin người đăng nhập (bao gồm tên email và nhiều thứ ở trong mục của login)
+  const [checkLogin, setCheckLogin] = useState(false); // kiểm tra xem đã đăng nhập thành công hay chưa
+  const [user, setUser] = useState(null); //thông tin người đăng nhập (bao gồm tên email và nhiều thứ ở trong mục của login)
   /*  xử lí địa điểm lúc đăng nhập  */
   const [currentLocation, setCurrentLocation] = useState({
     // currentLocation là tên thành phố và quốc giá
@@ -88,20 +88,37 @@ console.log(currentLocation)
               inforWeather={inforWeather}
               setInforWeather={setInforWeather}
               checkLogin={checkLogin}
-
+              hourlyWeather={hourlyWeather}
             />
           }
         />
-        
-        <Route path="/Login" element={<Login checkLogin={checkLogin} setCheckLogin={setCheckLogin} setUser={setUser}/>} />
-        <Route path="/Signup" element={<Signup checkLogin={checkLogin} setCheckLogin={setCheckLogin} setUser={setUser} />} />
+        <Route
+          path="/Login"
+          element={
+            <Login
+              checkLogin={checkLogin}
+              setCheckLogin={setCheckLogin}
+              setUser={setUser}
+            />
+          }
+        />
+        <Route
+          path="/Signup"
+          element={
+            <Signup
+              checkLogin={checkLogin}
+              setCheckLogin={setCheckLogin}
+              setUser={setUser}
+            />
+          }
+        />
         <Route
           path="/HourlyForecast"
           element={
             <HourlyWeather
               inforWeather={inforWeather}
               hourlyWeather={hourlyWeather}
-              checkLogin = {checkLogin}
+              checkLogin={checkLogin}
             />
           }
         /> 
@@ -111,6 +128,7 @@ console.log(currentLocation)
         {/* <Route path="/addtodo" element={<AddToDo />} />
         <Route path="/planned" element={<Planned />} /> */}
       </Routes>
+      <Footer />
     </div>
   );
 };
