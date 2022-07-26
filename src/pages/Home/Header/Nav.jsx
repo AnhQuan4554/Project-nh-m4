@@ -1,7 +1,8 @@
-import React from "react";
+import React,{useEffect,useState} from "react";
 import { S_Navigate } from "./Header_CSS";
 import { Link, NavLink } from "react-router-dom";
 const Nav = () => {
+ const active = `Navigate_link active`
   return (
     <S_Navigate className="Navigate">
       <div className="wrapper">

@@ -3,11 +3,11 @@ import Accordion from './Accordion'
 import styled from 'styled-components';
 import React from 'react'
 
-const Index = ({inforWeather}) => {
+const Index = ({inforWeather,checkLogin}) => {
 
   return (
     <>
-    <S_Index>
+    {checkLogin ?  <S_Index>
         <div className='big-container'>
             <div className='left-container'></div>
             <div className="forecast-box">
@@ -16,12 +16,14 @@ const Index = ({inforWeather}) => {
             </div>
             <div className="right-container"></div>
         </div>
-    </S_Index>
+    </S_Index> : <ContentSugget>Bạn cần đăng nhập để xem thêm thông tin chi tiết</ContentSugget>}
+   
     </>
   )
 }
 
 
+export default Index
 const S_Index = styled.div`
     .big-container{
         display: flex;
@@ -58,5 +60,7 @@ const S_Index = styled.div`
         height: 100vh;
     }
 `
-
-export default Index
+const ContentSugget =styled.h1`
+    margin-top: 150px;
+    text-align: center;
+`

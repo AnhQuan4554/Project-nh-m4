@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import styled from 'styled-components';
 
 import BodySection from "../../components/BodySection";
 import HourlyWeatherFooter from "./Footer";
@@ -88,7 +89,6 @@ const HourlyWeather = ({ inforWeather, hourlyWeather, checkLogin }) => {
     for (let i = indexOfStartWeather; i <= indexOfEndWeather; i++) {
       template.push(hourlyWeather.list[i]);
     }
-    console.log(template, "mangr owr hourly weahter");
     setListInfo(template);
   };
 
@@ -124,3 +124,7 @@ const HourlyWeather = ({ inforWeather, hourlyWeather, checkLogin }) => {
 };
 
 export default HourlyWeather;
+const ContentSugget =styled.h1`
+    margin-top: 150px;
+    text-align: center;
+`

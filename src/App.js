@@ -11,8 +11,9 @@ import Signup from "./Authentication/Signup";
 import AddToDo from "./pages/addTodo";
 import Planned from "./pages/planned";
 import HourlyForecast from "./components/HourlyForecast";
+import Index from "./components/FiveDay_forecast/Index";
 import Footer from "./components/Footer";
-import Index from "./components/Weekend_forecast/Index";
+
 
 const App = () => {
   const [inforWeather, setInforWeather] = useState(null);
@@ -25,7 +26,8 @@ const App = () => {
     city: "",
     country: "",
   });
-
+console.log(currentLocation)
+console.log('okokok')
   useEffect(() => {
     if (navigator.geolocation) {
       //check if geolocation is available
@@ -77,6 +79,7 @@ const App = () => {
       />
       <Nav />
 
+
       <Routes>
         <Route
           path="/"
@@ -118,10 +121,10 @@ const App = () => {
               checkLogin={checkLogin}
             />
           }
-        />
-        <Route path="/Index" element={<Index inforWeather={inforWeather} />} />{" "}
-        {/*đây là 5 ngày*/}
-
+        /> 
+        
+         <Route path="/Index" element={< Index checkLogin={checkLogin} inforWeather={inforWeather}  />} /> {/*  đây là 5 ngày */}
+    
         {/* <Route path="/addtodo" element={<AddToDo />} />
         <Route path="/planned" element={<Planned />} /> */}
       </Routes>

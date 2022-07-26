@@ -57,9 +57,10 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   borderTop: "1px solid rgba(0, 0, 0, .125)",
 }));
 
-export default function CustomizedAccordions({inforWeather}) {
+export default function CustomizedAccordions({ inforWeather }) {
   const [expanded, setExpanded] = React.useState("panel1");
-  const city = inforWeather &&  inforWeather.name ? inforWeather.name :'Hưng Yên'
+  const city =
+    inforWeather && inforWeather.name ? inforWeather.name : "Hưng Yên";
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
   };
@@ -69,19 +70,18 @@ export default function CustomizedAccordions({inforWeather}) {
     fetchForecast();
   }, []);
 
-  useEffect(() => {
-    if (api) {
-      console.log(api.list);
-    }
-  }, [api]);
+  // useEffect(() => {
+  //   if (api) {
+  //     console.log(api.list);
+  //   }
+  // }, [api]);
 
   const fetchForecast = async () => {
     try {
       const res = await fetch(
         `https://api.openweathermap.org/data/2.5/forecast?q=${city}&lang=vi&appid=7929f327fc4a780215bc2a5b14f3fe24`
         // "https://api.openweathermap.org/data/2.5/forecast?q=Hanoi&lang=vi&appid=7929f327fc4a780215bc2a5b14f3fe24"
-    
-        );
+      );
       const data = await res.json();
       setApi(data);
     } catch (error) {
@@ -157,9 +157,7 @@ export default function CustomizedAccordions({inforWeather}) {
 
   var startDate = new Date();
   var aryDates = GetDates(startDate, 7);
-  console.log(aryDates[1]);
   const test = new Date(1658355952 * 1000).toTimeString().slice(0, 5);
-  console.log("sunrise: " + test);
 
   return (
     <>
@@ -174,28 +172,39 @@ export default function CustomizedAccordions({inforWeather}) {
                 <div className="today">Hôm nay</div>{" "}
                 <div className="temp">
                   <strong>
-                  
                     {/* {api && Math.round(api.list[0].main.temp_max - 280)} */}
-                    {api && inforWeather.main.temp && Number(inforWeather.main.temp).toFixed(0)}
+                    {api &&
+                      inforWeather.main.temp &&
+                      Number(inforWeather.main.temp).toFixed(0)}
                     <TbTemperatureCelsius />
                   </strong>
-                  /{api && inforWeather.main.temp && Number(inforWeather.main.temp_max).toFixed(0)}
+                  /
+                  {api &&
+                    inforWeather.main.temp &&
+                    Number(inforWeather.main.temp_max).toFixed(0)}
                   <TbTemperatureCelsius />
                 </div>{" "}
                 <div className="desc">
                   {/* {api && dayOrNight[api.list[0].sys.pod]} */}
-                <div className="weather-image"><img src={`http://openweathermap.org/img/wn/${api && api.list[0].weather[0].icon}.png`} /></div>
+                  <div className="weather-image">
+                    <img
+                      src={`http://openweathermap.org/img/wn/${
+                        api && api.list[0].weather[0].icon
+                      }.png`}
+                    />
+                  </div>
                   {api && api.list[0].weather[0].description}
                 </div>
-                <div className="rain"><IoIosWater />
-                {api && api.list[0].main.humidity}%</div>
-             
-              <div className="wind"><BiWind />
-                {api && api.list[0].wind.speed}m/s</div>
+                <div className="rain">
+                  <IoIosWater />
+                  {api && api.list[0].main.humidity}%
                 </div>
-              <div className="right-side">
-               
+                <div className="wind">
+                  <BiWind />
+                  {api && api.list[0].wind.speed}m/s
+                </div>
               </div>
+              <div className="right-side"></div>
             </div>
           </S_weatherBar>
         </AccordionSummary>
@@ -278,13 +287,11 @@ export default function CustomizedAccordions({inforWeather}) {
                     <ul>
                       <li>
                         <BsSunriseFill />
-                        Tầm nhìn:{" "}
-                        {api && api.list[0].visibility/1000}km
+                        Tầm nhìn: {api && api.list[0].visibility / 1000}km
                       </li>
                       <li>
-                      <BiWind />
-                      Tóc độ gió:{' '}
-                      {api && api.list[0].wind.speed}m/s
+                        <BiWind />
+                        Tóc độ gió: {api && api.list[0].wind.speed}m/s
                       </li>
                     </ul>
                   </div>
@@ -312,23 +319,29 @@ export default function CustomizedAccordions({inforWeather}) {
                   <TbTemperatureCelsius />
                 </div>{" "}
                 <div className="desc">
-                <div className="weather-image"><img src={`http://openweathermap.org/img/wn/${api && api.list[5].weather[0].icon}.png`} /></div>
+                  <div className="weather-image">
+                    <img
+                      src={`http://openweathermap.org/img/wn/${
+                        api && api.list[5].weather[0].icon
+                      }.png`}
+                    />
+                  </div>
                   {api && api.list[5].weather[0].description}
                 </div>
                 <div className="rain">
-                <IoIosWater />
-                {api && api.list[5].main.humidity}%
+                  <IoIosWater />
+                  {api && api.list[5].main.humidity}%
                 </div>
                 <div className="wind">
-                <BiWind />
-                {api && api.list[0].wind.speed}m/s
+                  <BiWind />
+                  {api && api.list[0].wind.speed}m/s
                 </div>
               </div>
             </div>
           </S_weatherBar>
         </AccordionSummary>
         <AccordionDetails>
-        <S_weatherBar>
+          <S_weatherBar>
             <div className="detail-box">
               <div className="detail-left">
                 <div className="detail-left-above">
@@ -406,8 +419,7 @@ export default function CustomizedAccordions({inforWeather}) {
                     <ul>
                       <li>
                         <BsSunriseFill />
-                        Tầm nhìn:{" "}
-                        {api && api.list[5].visibility/1000}km
+                        Tầm nhìn: {api && api.list[5].visibility / 1000}km
                       </li>
                       <li>
                         <BsSunsetFill />
@@ -429,7 +441,7 @@ export default function CustomizedAccordions({inforWeather}) {
         onChange={handleChange("panel3")}
       >
         <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
-        <S_weatherBar>
+          <S_weatherBar>
             <div className="box">
               <div className="left-side">
                 <div className="date">{aryDates[2]}</div>{" "}
@@ -442,23 +454,29 @@ export default function CustomizedAccordions({inforWeather}) {
                   <TbTemperatureCelsius />
                 </div>{" "}
                 <div className="desc">
-                <div className="weather-image"><img src={`http://openweathermap.org/img/wn/${api && api.list[10].weather[0].icon}.png`} /></div>
+                  <div className="weather-image">
+                    <img
+                      src={`http://openweathermap.org/img/wn/${
+                        api && api.list[10].weather[0].icon
+                      }.png`}
+                    />
+                  </div>
                   {api && api.list[10].weather[0].description}
                 </div>
                 <div className="rain">
-                <IoIosWater />
-                {api && api.list[10].main.humidity}%
+                  <IoIosWater />
+                  {api && api.list[10].main.humidity}%
                 </div>
                 <div className="wind">
-                <BiWind />
-                {api && api.list[10].wind.speed}m/s
+                  <BiWind />
+                  {api && api.list[10].wind.speed}m/s
                 </div>
               </div>
             </div>
           </S_weatherBar>
         </AccordionSummary>
         <AccordionDetails>
-        <S_weatherBar>
+          <S_weatherBar>
             <div className="detail-box">
               <div className="detail-left">
                 <div className="detail-left-above">
@@ -536,8 +554,7 @@ export default function CustomizedAccordions({inforWeather}) {
                     <ul>
                       <li>
                         <BsSunriseFill />
-                        Tầm nhìn:{" "}
-                        {api && api.list[10].visibility/1000}km
+                        Tầm nhìn: {api && api.list[10].visibility / 1000}km
                       </li>
                       <li>
                         <BsSunsetFill />
@@ -559,7 +576,7 @@ export default function CustomizedAccordions({inforWeather}) {
         onChange={handleChange("panel4")}
       >
         <AccordionSummary aria-controls="panel4d-content" id="panel4d-header">
-        <S_weatherBar>
+          <S_weatherBar>
             <div className="box">
               <div className="left-side">
                 <div className="date">{aryDates[3]}</div>{" "}
@@ -572,23 +589,29 @@ export default function CustomizedAccordions({inforWeather}) {
                   <TbTemperatureCelsius />
                 </div>{" "}
                 <div className="desc">
-                <div className="weather-image"><img src={`http://openweathermap.org/img/wn/${api && api.list[15].weather[0].icon}.png`} /></div>
+                  <div className="weather-image">
+                    <img
+                      src={`http://openweathermap.org/img/wn/${
+                        api && api.list[15].weather[0].icon
+                      }.png`}
+                    />
+                  </div>
                   {api && api.list[15].weather[0].description}
                 </div>
                 <div className="rain">
-                <IoIosWater />
-                {api && api.list[15].main.humidity}%
+                  <IoIosWater />
+                  {api && api.list[15].main.humidity}%
                 </div>
                 <div className="wind">
-                <BiWind />
-                {api && api.list[15].wind.speed}m/s
+                  <BiWind />
+                  {api && api.list[15].wind.speed}m/s
                 </div>
               </div>
             </div>
           </S_weatherBar>
         </AccordionSummary>
         <AccordionDetails>
-        <S_weatherBar>
+          <S_weatherBar>
             <div className="detail-box">
               <div className="detail-left">
                 <div className="detail-left-above">
@@ -666,8 +689,7 @@ export default function CustomizedAccordions({inforWeather}) {
                     <ul>
                       <li>
                         <BsSunriseFill />
-                        Tầm nhìn:{" "}
-                        {api && api.list[15].visibility/1000}km
+                        Tầm nhìn: {api && api.list[15].visibility / 1000}km
                       </li>
                       <li>
                         <BsSunsetFill />
@@ -689,7 +711,7 @@ export default function CustomizedAccordions({inforWeather}) {
         onChange={handleChange("panel5")}
       >
         <AccordionSummary aria-controls="panel5d-content" id="panel5d-header">
-        <S_weatherBar>
+          <S_weatherBar>
             <div className="box">
               <div className="left-side">
                 <div className="date">{aryDates[4]}</div>{" "}
@@ -702,23 +724,29 @@ export default function CustomizedAccordions({inforWeather}) {
                   <TbTemperatureCelsius />
                 </div>{" "}
                 <div className="desc">
-                <div className="weather-image"><img src={`http://openweathermap.org/img/wn/${api && api.list[20].weather[0].icon}.png`} /></div>
+                  <div className="weather-image">
+                    <img
+                      src={`http://openweathermap.org/img/wn/${
+                        api && api.list[20].weather[0].icon
+                      }.png`}
+                    />
+                  </div>
                   {api && api.list[20].weather[0].description}
                 </div>
                 <div className="rain">
-                <IoIosWater />
-                {api && api.list[20].main.humidity}%
+                  <IoIosWater />
+                  {api && api.list[20].main.humidity}%
                 </div>
                 <div className="wind">
-                <BiWind />
-                {api && api.list[20].wind.speed}m/s
+                  <BiWind />
+                  {api && api.list[20].wind.speed}m/s
                 </div>
               </div>
             </div>
           </S_weatherBar>
         </AccordionSummary>
         <AccordionDetails>
-        <S_weatherBar>
+          <S_weatherBar>
             <div className="detail-box">
               <div className="detail-left">
                 <div className="detail-left-above">
@@ -796,8 +824,7 @@ export default function CustomizedAccordions({inforWeather}) {
                     <ul>
                       <li>
                         <BsSunriseFill />
-                        Tầm nhìn:{" "}
-                        {api && api.list[20].visibility/1000}km
+                        Tầm nhìn: {api && api.list[20].visibility / 1000}km
                       </li>
                       <li>
                         <BsSunsetFill />

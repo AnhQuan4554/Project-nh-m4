@@ -19,6 +19,11 @@ export const S_headLogo = styled.div`
   .imgLogo {
     font-size: 50px;
     color: #fff;
+    transition: all 1s;
+    &:hover{
+      transform: rotate(360deg);
+      
+    }
   }
 `;
 export const S_headSearch = styled.div`
@@ -121,8 +126,7 @@ export const S_suggest = styled.ul`
   border-radius: 10px;
   z-index: 10;
   li {
-    padding: 10px 35px;
-    margin-bottom: 5px;
+    padding: 10px 35px 15px 35px;
     list-style: none;
     color: #000;
     border-bottom: 1px solid #888;

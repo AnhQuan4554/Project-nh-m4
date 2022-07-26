@@ -79,8 +79,8 @@ const Signup = () => {
                 <i class="fa-solid fa-lock"></i>
                 <input onChange={handleInput} type="password" name="confirmPassword" placeholder="Confirm password" value={data.confirmPassword} />
             </div>
-            <button onClick={handleSubmit} type="submit">Register</button>
-            <button onClick={googleAuth} >Sign in with Google</button>
+            <button className="authenButton" onClick={handleSubmit} type="submit">Register</button>
+            <button className="authenButton" onClick={googleAuth} >Sign in with Google</button>
             <ToastContainer />
         </div>
     </div>

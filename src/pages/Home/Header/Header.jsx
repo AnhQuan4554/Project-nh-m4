@@ -35,11 +35,6 @@ const Header = ({
   let lat = 0;
   let lon = 0;
 
-  //     useEffect(()=>{
-  //       if(nameLocal){
-  //           apiFetch();
-  //       }
-  // },[nameLocal])
   const apiFetch = async () => {
     try {
       let response = await fetch(`${keyApi_currentday}`);
@@ -99,7 +94,10 @@ const Header = ({
       );
     }
   };
-
+  const searchWeather = (e)=>{
+    apiFetch()
+    setnameLocal('')
+  }
   return (
     <S_Header>
       <S_headLogo className="headLogo">
@@ -121,7 +119,7 @@ const Header = ({
         />
         {/* search đia điểm , và các địa điểm sẽ đc lưu vào local */}
         <div className="headSearch_icon">
-          <FaSearchLocation />
+          <FaSearchLocation style={{cursor:'pointer'}} onClick={searchWeather} />
         </div>
       </S_headSearch>
       {!checkLogin ? (
