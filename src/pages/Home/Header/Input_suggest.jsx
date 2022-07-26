@@ -13,6 +13,7 @@ const Input_suggest = ({setShowSuggest,apiFetch,setnameLocal,nameLocal,handleFoc
             setShowSuggest(false)
             setnameLocal('')
         }
+     
     },[clickInput_item])
 
 /* tại sao setShowsuggest để vào handleClcik lại sai  */
