@@ -1,22 +1,34 @@
 import React,{useEffect,useState} from "react";
 import { S_Navigate } from "./Header_CSS";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link ,NavLink } from "react-router-dom";
 const Nav = () => {
-  const [isActive, setIsActive] = useState(false)
-  useEffect(()=>{
-    
-  })
+ const active = `Navigate_link active`
   return (
     <S_Navigate className='Navigate'>
-      <div  className={isActive ? "Navigate_link active" :"Navigate_link" }> {/* active hiện border  */}
-          <Link to="/">Hôm nay </Link> {/* chỗ này để điền link */}
-      </div>
-      <div  className={isActive ? "Navigate_link active" :"Navigate_link" }>
-          <Link to="HourlyForecast">Hàng giờ </Link> {/* chỗ này để điền link */}
-      </div>
-      <div  className={isActive ? "Navigate_link active" :"Navigate_link" }>
-        <Link to="Index">5 ngày </Link> {/* chỗ này để điền link */}
-      </div>
+      <NavLink
+            to="/"
+            className={({ isActive }) =>
+              isActive ? active : undefined
+            }
+          >
+            Hôm nay
+          </NavLink>
+          <NavLink
+            to="HourlyForecast"
+            className={({ isActive }) =>
+              isActive ? active : undefined
+            }
+          >
+           Hàng giờ
+          </NavLink>
+          <NavLink
+            to="Index" //in dex này trong component fiveday_forecast
+            className={({ isActive }) =>
+              isActive ? active : undefined
+            }
+          >
+           5 ngày
+          </NavLink>
     </S_Navigate>
   );
 };

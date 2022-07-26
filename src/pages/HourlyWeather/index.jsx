@@ -89,7 +89,6 @@ const HourlyWeather = ({ inforWeather, hourlyWeather, checkLogin }) => {
     for (let i = indexOfStartWeather; i <= indexOfEndWeather; i++) {
       template.push(hourlyWeather.list[i]);
     }
-    console.log(template, "mangr owr hourly weahter");
     setListInfo(template);
   };
 
