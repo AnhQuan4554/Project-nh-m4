@@ -94,10 +94,10 @@ const Header = ({
       );
     }
   };
-  const searchWeather = (e)=>{
-    apiFetch()
-    setnameLocal('')
-  }
+  const searchWeather = (e) => {
+    apiFetch();
+    setnameLocal("");
+  };
   return (
     <S_Header>
       <S_headLogo className="headLogo">
@@ -105,10 +105,10 @@ const Header = ({
           <div className="imgLogo">
             <FaSun />
           </div>
+          <div className="contentLogo">
+            <p>THE FORECAST WEATHER</p>
+          </div>
         </Link>
-        <div className="contentLogo">
-          <p>THE FORECAST WEATHER</p>
-        </div>
       </S_headLogo>
       <S_headSearch className="headSearch">
         <Input_search
@@ -119,7 +119,10 @@ const Header = ({
         />
         {/* search đia điểm , và các địa điểm sẽ đc lưu vào local */}
         <div className="headSearch_icon">
-          <FaSearchLocation style={{cursor:'pointer'}} onClick={searchWeather} />
+          <FaSearchLocation
+            style={{ cursor: "pointer" }}
+            onClick={searchWeather}
+          />
         </div>
       </S_headSearch>
       {!checkLogin ? (

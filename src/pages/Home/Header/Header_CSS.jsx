@@ -10,20 +10,27 @@ export const S_Header = styled.header`
   padding: 0 105px;
 `;
 export const S_headLogo = styled.div`
-  display: flex;
-  align-items: center;
+  a {
+    display: flex;
+    align-items: center;
+
+    &:hover .imgLogo {
+      transform: rotate(360deg);
+    }
+  }
+
   .contentLogo p {
     color: #fff;
     margin-left: 10px;
   }
+
   .imgLogo {
     font-size: 50px;
     color: #fff;
-    transition: all 1s;
-    &:hover{
-      transform: rotate(360deg);
-      
-    }
+    transition: all 1s ease-in-out;
+    transform-origin: center center;
+    display: flex;
+    align-items: center;
   }
 `;
 export const S_headSearch = styled.div`
@@ -87,16 +94,22 @@ export const S_Navigate = styled.div`
 
   .wrapper {
     margin: 0 auto;
-    max-width: 1280px;
+    max-width: 1000px;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
 
     .Navigate_link {
+      min-width: 120px;
       padding: 0 15px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       border-bottom: 3px transparent solid;
       transition: all 0.2s ease;
+
       &.active {
         border-bottom-color: #ccc;
       }
@@ -104,10 +117,6 @@ export const S_Navigate = styled.div`
       &:hover {
         border-bottom-color: #ccc;
       }
-
-      height: 100%;
-      display: flex;
-      align-items: center;
       a {
         text-decoration: none;
         color: #fff;
