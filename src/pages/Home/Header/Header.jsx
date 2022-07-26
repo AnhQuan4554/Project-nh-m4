@@ -35,11 +35,6 @@ const Header = ({
   let lat = 0;
   let lon = 0;
 
-  //     useEffect(()=>{
-  //       if(nameLocal){
-  //           apiFetch();
-  //       }
-  // },[nameLocal])
   const apiFetch = async () => {
     try {
       let response = await fetch(`${keyApi_currentday}`);

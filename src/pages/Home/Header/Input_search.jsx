@@ -10,6 +10,7 @@ const Input_search = ({ setnameLocal, nameLocal, apiFetch, inforWeather }) => {
   };
   const [showSuggest, setShowSuggest] = useState(false);
   const handleFocus = () => {
+  
     setShowSuggest(true);
   };
   
@@ -21,8 +22,9 @@ const Input_search = ({ setnameLocal, nameLocal, apiFetch, inforWeather }) => {
     <div>
       <input
         onFocus={handleFocus}
+        
         onChange={(e) => setnameLocal(e.target.value)}
-        onKeyDown={(e) => keyEnter(e.key)}
+   
         value={nameLocal}
         type="text"
         placeholder="Tỉnh thành phố "

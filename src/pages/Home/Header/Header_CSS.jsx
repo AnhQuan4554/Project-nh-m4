@@ -88,6 +88,15 @@ export const S_Navigate = styled.div`
   color: #fff;
   height: 40px;
   padding: 0 164px;
+  a {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+
+}
   .Navigate_link {
     &.active {
       border-bottom: 3px #ccc solid;
@@ -95,10 +104,7 @@ export const S_Navigate = styled.div`
     height: 100%;
     display: flex;
     align-items: center;
-    a {
-      text-decoration: none;
-      color: #fff;
-    }
+ 
   }
 `;
 
@@ -112,8 +118,7 @@ export const S_suggest = styled.ul`
   border-radius: 10px;
   z-index: 10;
   li {
-    padding: 10px 35px;
-    margin-bottom: 5px;
+    padding: 10px 35px 15px 35px;
     list-style: none;
     color: #000;
     border-bottom: 1px solid #888;

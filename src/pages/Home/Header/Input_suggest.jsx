@@ -2,17 +2,27 @@ import React,{useState,useEffect} from 'react'
 import{S_suggest} from'./Header_CSS'
 const Input_suggest = ({setShowSuggest,apiFetch,setnameLocal,nameLocal,handleFocus}) => {
     const locals = localStorage.getItem('locations') ? JSON.parse(localStorage.getItem('locations')):[]
-  
-    const handleClick = (e)=>{ 
-        console.log(e.target.innerHTML,'key của nó đây nha')
-         setnameLocal(e.target.innerHTML)
-         console.log('khi click thi nameLocal = ',nameLocal)
-         setShowSuggest(false)
-         nameLocal&& apiFetch()
-        // handleFocus()
+    const [clickInput_item, setClickInput_item] = useState(false) // kiểm tra xem có click chưa
+ 
+    useEffect(()=>{
+        console.log(clickInput_item)
+        if(clickInput_item){
+            apiFetch()
+            console.log(nameLocal,'useEffecc cảu click  suggest');
+            setClickInput_item(false)
+            setShowSuggest(false)
+            setnameLocal('')
         }
-       /* xử lí local */
-       
+    },[clickInput_item])
+
+/* tại sao setShowsuggest để vào handleClcik lại sai  */
+    const handleClick = (e)=>{ 
+        setnameLocal(e.target.innerHTML)
+         setClickInput_item(true)  
+
+        }
+
+    // console.log(clickInput_item);
     return (
     <S_suggest>
         {locals.reverse().map((iteam,index)=>(

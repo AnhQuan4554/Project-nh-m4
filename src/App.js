@@ -27,6 +27,7 @@ const App = () => {
     country: "",
   });
 console.log(currentLocation)
+console.log('okokok')
   useEffect(() => {
     if (navigator.geolocation) {
       //check if geolocation is available
