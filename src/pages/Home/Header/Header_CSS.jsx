@@ -76,23 +76,37 @@ export const S_head_User = styled.div`
 /////////////////animation
 export const S_Navigate = styled.div`
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   background-color: #2b2735;
   color: #fff;
   height: 40px;
-  padding: 0 164px;
-  .Navigate_link {
-    &.active {
-      border-bottom: 3px #ccc solid;
-    }
+
+  .wrapper {
+    margin: 0 auto;
+    max-width: 1280px;
     height: 100%;
     display: flex;
     align-items: center;
-    a {
-      text-decoration: none;
-      color: #fff;
+    justify-content: space-between;
+
+    .Navigate_link {
+      padding: 0 15px;
+      border-bottom: 3px transparent solid;
+      transition: all 0.2s ease;
+      &.active {
+        border-bottom-color: #ccc;
+      }
+
+      &:hover {
+        border-bottom-color: #ccc;
+      }
+
+      height: 100%;
+      display: flex;
+      align-items: center;
+      a {
+        text-decoration: none;
+        color: #fff;
+      }
     }
   }
 `;

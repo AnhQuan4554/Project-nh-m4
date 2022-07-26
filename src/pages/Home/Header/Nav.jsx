@@ -1,17 +1,23 @@
 import React from "react";
 import { S_Navigate } from "./Header_CSS";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 const Nav = () => {
   return (
-    <S_Navigate className='Navigate'>
-      <div className="Navigate_link active"> {/* active hiện border  */}
-          <Link to="/">Hôm nay </Link> {/* chỗ này để điền link */}
-      </div>
-      <div className="Navigate_link">
-          <Link to="HourlyForecast">Hàng giờ </Link> {/* chỗ này để điền link */}
-      </div>
-      <div className="Navigate_link">
-        <Link to="Index">5 ngày </Link> {/* chỗ này để điền link */}
+    <S_Navigate className="Navigate">
+      <div className="wrapper">
+        <NavLink className="Navigate_link" activeClassName="active" to="/">
+          Hôm nay
+        </NavLink>
+        <NavLink
+          className="Navigate_link"
+          activeClassName="active"
+          to="/HourlyForecast"
+        >
+          3 giờ
+        </NavLink>
+        <NavLink className="Navigate_link" activeClassName="active" to="Index">
+          5 ngày
+        </NavLink>
       </div>
     </S_Navigate>
   );

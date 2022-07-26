@@ -86,7 +86,6 @@ const App = () => {
               inforWeather={inforWeather}
               setInforWeather={setInforWeather}
               checkLogin={checkLogin}
-              hourlyWeather={hourlyWeather}
             />
           }
         />
