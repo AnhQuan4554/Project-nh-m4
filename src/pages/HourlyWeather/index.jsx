@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import styled from 'styled-components';
+import styled from "styled-components";
 
 import BodySection from "../../components/BodySection";
 import HourlyWeatherFooter from "./Footer";
@@ -20,7 +20,8 @@ const HourlyWeather = ({ inforWeather, hourlyWeather, checkLogin }) => {
     date: date.getDate(),
     month: date.getMonth() + 1,
     hour: date.getHours(),
-    minute: date.getMinutes(),
+    minute:
+      date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes(),
   };
   console.log(today, "today ở HourlyWeather");
 
@@ -63,7 +64,7 @@ const HourlyWeather = ({ inforWeather, hourlyWeather, checkLogin }) => {
   }, [lat, lon, hourlyWeather]);
 
   const handlerForecastData = () => {
-    let indexOfStartWeather = 0;
+    let indexOfStartWeather = null;
     let indexOfEndWeather = 0;
     console.log(today, "hahah to day");
     for (let i = 0; i < hourlyWeather.list.length; i++) {
@@ -71,6 +72,7 @@ const HourlyWeather = ({ inforWeather, hourlyWeather, checkLogin }) => {
       // console.log(temp, "temp o hourly weather")
       if (temp.getDate() == today.date)
         if (temp.getHours() > today.hour) {
+          console.log(today.hour, "today.hour");
           indexOfStartWeather = i - 1;
           break;
         }
@@ -85,6 +87,7 @@ const HourlyWeather = ({ inforWeather, hourlyWeather, checkLogin }) => {
       }
     }
     console.log("có vô đây nhas", indexOfStartWeather, indexOfEndWeather);
+    if (indexOfStartWeather === null) indexOfStartWeather = indexOfEndWeather;
     const template = [];
     for (let i = indexOfStartWeather; i <= indexOfEndWeather; i++) {
       template.push(hourlyWeather.list[i]);
@@ -124,7 +127,3 @@ const HourlyWeather = ({ inforWeather, hourlyWeather, checkLogin }) => {
 };
 
 export default HourlyWeather;
-const ContentSugget =styled.h1`
-    margin-top: 150px;
-    text-align: center;
-`

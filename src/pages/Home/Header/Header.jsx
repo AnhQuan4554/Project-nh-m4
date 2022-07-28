@@ -32,8 +32,8 @@ const Header = ({
     setnameLocal("");
   }, []);
 
-  let lat = 0;
-  let lon = 0;
+  let lat = null;
+  let lon = null;
 
   const apiFetch = async () => {
     try {
@@ -89,9 +89,7 @@ const Header = ({
       const hourForecast = await hourForecastRes.json();
       setHourlyWeather(hourForecast);
     } catch {
-      alert(
-        "Oops! Something went wrong with the forecast. Please try again later."
-      );
+      console.log("có lỗi rồi");
     }
   };
   const searchWeather = (e) => {
