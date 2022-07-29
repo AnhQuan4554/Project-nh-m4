@@ -12,8 +12,8 @@ const HourlyWeather = ({ inforWeather, hourlyWeather, checkLogin }) => {
   const lat = inforWeather && inforWeather.coord && inforWeather.coord.lat;
   const lon = inforWeather && inforWeather.coord && inforWeather.coord.lon;
 
-  console.log(hourlyWeather, "ở HourlyWeather");
-  console.log(inforWeather, "inforWeather ở HourlyWeather");
+  // console.log(hourlyWeather, "ở HourlyWeather");
+  // console.log(inforWeather, "inforWeather ở HourlyWeather");
   const date = new Date();
   const today = {
     day: date.getDay(),
@@ -23,7 +23,7 @@ const HourlyWeather = ({ inforWeather, hourlyWeather, checkLogin }) => {
     minute:
       date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes(),
   };
-  console.log(today, "today ở HourlyWeather");
+  // console.log(today, "today ở HourlyWeather");
 
   const time = {
     day: "",
@@ -66,27 +66,27 @@ const HourlyWeather = ({ inforWeather, hourlyWeather, checkLogin }) => {
   const handlerForecastData = () => {
     let indexOfStartWeather = null;
     let indexOfEndWeather = 0;
-    console.log(today, "hahah to day");
+    // console.log(today, "hahah to day");
     for (let i = 0; i < hourlyWeather.list.length; i++) {
       const temp = new Date(hourlyWeather.list[i]["dt_txt"]);
       // console.log(temp, "temp o hourly weather")
       if (temp.getDate() == today.date)
         if (temp.getHours() > today.hour) {
-          console.log(today.hour, "today.hour");
+          // console.log(today.hour, "today.hour");
           indexOfStartWeather = i - 1;
           break;
         }
     }
     for (let i = 0; i < hourlyWeather.list.length; i++) {
       const temp = new Date(hourlyWeather.list[i]["dt_txt"]);
-      console.log(temp, "temp o hourly weather");
+      // console.log(temp, "temp o hourly weather");
 
       if (temp.getDate() > today.date) {
         indexOfEndWeather = i - 1;
         break;
       }
     }
-    console.log("có vô đây nhas", indexOfStartWeather, indexOfEndWeather);
+    // console.log("có vô đây nhas", indexOfStartWeather, indexOfEndWeather);
     if (indexOfStartWeather === null) indexOfStartWeather = indexOfEndWeather;
     const template = [];
     for (let i = indexOfStartWeather; i <= indexOfEndWeather; i++) {

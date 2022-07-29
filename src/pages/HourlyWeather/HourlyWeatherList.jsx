@@ -6,7 +6,7 @@ import { CgInfinity } from "react-icons/cg";
 import HourlyWeatherItem from "./HourlyWeatherItem/HourlyWeatherItem";
 
 const HourlyWeatherList = ({ time, listInfo }) => {
-  console.log(listInfo, "ở hour list");
+  // console.log(listInfo, "ở hour list");
 
   return (
     <S_HourlyWeatherList>
