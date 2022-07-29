@@ -66,9 +66,8 @@ const HourlyWeatherItemDetails = ({
 export default HourlyWeatherItemDetails;
 
 const S_HourlyWeatherItemDetails = styled.div`
-  margin: 15px 26px;
+  margin: 8px 26px 15px;
   padding: 15px;
-  margin-top: 5px;
   border: 1px solid #dedede;
   border-radius: 6px;
 

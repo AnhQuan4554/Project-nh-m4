@@ -6,7 +6,6 @@ const HourlyWeatherDetail = ({
   label,
   content,
   iconHTML = "",
-  iconColor,
 }) => {
   return (
     <S_HourlyWeatherDetail>

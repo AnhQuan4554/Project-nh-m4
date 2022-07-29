@@ -17,17 +17,19 @@ const SunClock = ({ sunrise, sunset }) => {
   const nowHour = nowTime.getHours();
   const nowMinute = nowTime.getMinutes();
   const currentTime = nowHour * 60 + nowMinute;
-  const now =
-    (currentTime <= sunsetTime ? currentTime : sunsetTime) - sunriseTime;
+  const now =currentTime - sunriseTime;
+    // (currentTime <= sunsetTime ? currentTime : sunsetTime) - sunriseTime;
 
   const time = sunsetTime - sunriseTime;
   const anglePerMinute = 180 / time;
-  const angle = now <= time ? anglePerMinute * now : 180;
+  const angle = anglePerMinute * now;
   const cx = sunrise ? 50 * Math.cos((angle * Math.PI) / 180) : 0;
   const cy = Math.sqrt(50 * 50 - cx * cx);
+  const display = angle > 180 ? "none" : "flex";
+  // console.log(angle, 'angle ');
 
   return (
-    <S_SunClock angle={angle} cx={cx} cy={cy}>
+    <S_SunClock angle={angle} cx={cx} cy={cy} display={display}>
       <div className="circle"></div>
       <div className="sun">
         <HiSun />
@@ -56,7 +58,7 @@ const S_SunClock = styled.div`
     font-size: 24px;
     color: #febc11;
     background-color: #fff;
-    display: flex;
+    display: ${(props) => props.display};
     justify-content: center;
     align-items: center;
     position: absolute;

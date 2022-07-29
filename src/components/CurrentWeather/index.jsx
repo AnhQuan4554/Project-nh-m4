@@ -80,10 +80,10 @@ const CurrentWeather = ({ inforWeather }) => {
         `http://api.weatherstack.com/current?access_key=63310d5929808f55138cbf3097b97af2&units=m&query=${lat},${lon}`
       );
       const uvData = await uvRes.json();
-      console.log(uvData, "uv data");
+      // console.log(uvData, "uv data");
       setUvIndex(uvData && uvData.current ? uvData.current["uv_index"] : "--");
     } catch {
-      alert("wrong api");
+      // alert("wrong api");
     }
   };
 
