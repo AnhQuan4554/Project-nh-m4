@@ -8,9 +8,6 @@ import Home from "./pages/Home/index";
 import HourlyWeather from "./pages/HourlyWeather";
 import Login from "./Authentication/Login";
 import Signup from "./Authentication/Signup";
-import AddToDo from "./pages/addTodo";
-import Planned from "./pages/planned";
-import HourlyForecast from "./components/HourlyForecast";
 import Index from "./components/FiveDay_forecast/Index";
 import Footer from "./components/Footer";
 
@@ -78,7 +75,7 @@ console.log('okokok')
         setCheckLogin={setCheckLogin}
       />
       <Nav />
-
+      
 
       <Routes>
         <Route

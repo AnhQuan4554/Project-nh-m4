@@ -1,6 +1,8 @@
 import React from 'react'
 import { useState } from 'react'
 import { app } from '../firebaseConfig';
+import { Link } from "react-router-dom";
+
 import {getAuth, signInWithEmailAndPassword, GoogleAuthProvider,signInWithPopup,
     sendSignInLinkToEmail, createUserWithEmailAndPassword } from 'firebase/auth';
 import { ToastContainer, toast } from 'react-toastify';
@@ -81,8 +83,19 @@ const Signup = () => {
             </div>
             <button className="authenButton" onClick={handleSubmit} type="submit">Register</button>
             <button className="authenButton" onClick={googleAuth} >Sign in with Google</button>
-            <ToastContainer />
         </div>
+        <div className="imgAuthen">
+            <div className="imgAuthen_content">
+                <span>Welcome THE FORECAST WEATHER</span>
+                <div className="Signup_button register">
+                      <button>
+                          <Link to='/Signup'>You have an account</Link>
+                      </button>
+                </div>
+            </div>
+          <img src="https://images.pexels.com/photos/2835436/pexels-photo-2835436.jpeg?auto=compress&cs=tinysrgb&w=600"></img>
+      </div>
+      <ToastContainer />
     </div>
     )
     }

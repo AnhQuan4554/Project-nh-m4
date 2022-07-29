@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { app } from "../firebaseConfig";
+import { Link } from "react-router-dom";
 import {
   getAuth,
   signInWithEmailAndPassword,
@@ -12,6 +13,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "../auth.css";
 import { useNavigate } from "react-router-dom";
+import { Button } from "@mui/material";
 const Login = ({ checkLogin, setCheckLogin, setUser }) => {
   let navigate = useNavigate(); //quay về trang chủ
   let auth = getAuth();
@@ -93,9 +95,23 @@ const Login = ({ checkLogin, setCheckLogin, setUser }) => {
         <button className="authenButton" onClick={handleSubmit} type="submit">
           Login
         </button>
-        <button className="authenButton" onClick={googleAuth}>Sign in with Google</button>
-        <ToastContainer />
+        <button className="authenButton" onClick={googleAuth}>
+          Sign in with Google
+        </button>
       </div>
+      <div className="imgAuthen">
+            <div className="imgAuthen_content">
+                <span>Welcome THE FORECAST WEATHER</span>
+                <div className="Signup_button ">
+                      <button>
+                          <Link to='/Signup'>Creat an account</Link>
+                      </button>
+                </div>
+            </div>
+          <img src="https://images.pexels.com/photos/2835436/pexels-photo-2835436.jpeg?auto=compress&cs=tinysrgb&w=600"></img>
+      </div>
+        
+        <ToastContainer />
     </div>
   );
 };

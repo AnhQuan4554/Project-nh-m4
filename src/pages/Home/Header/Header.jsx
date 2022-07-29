@@ -7,7 +7,7 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import { S_Header, S_headLogo, S_headSearch, S_head_User } from "./Header_CSS";
 import Input_search from "./Input_search";
 import Header_withinLog from "./Header_withinLog";
-
+import {handle_input} from"./Handle_input"
 const Header = ({
   inforWeather,
   setInforWeather,
@@ -28,12 +28,12 @@ const Header = ({
   useEffect(() => {
     // ngay khi mới vào thì call luôn ở địa điểm người dung
     //còn khi nhập và ấn enter ở Input_search cx call
-    apiFetch();
+     apiFetch();
     setnameLocal("");
   }, []);
 
-  let lat = 0;
-  let lon = 0;
+  let lat = undefined;
+  let lon = undefined;
 
   const apiFetch = async () => {
     try {
@@ -42,7 +42,7 @@ const Header = ({
       inforWeathers && setInforWeather(inforWeathers);
       lat = (await inforWeathers) && inforWeathers.coord.lat;
       lon = (await inforWeathers) && inforWeathers.coord.lon;
-      getHourForecast(lat, lon);
+     lat && lon && getHourForecast(lat, lon);
       // thêm các địa chỉ chi nhập ở input vào local
       if (inforWeathers.name) {
         // nếu tồn tại tên thành phố khi call thì mới thêm vào local và lúc này nameLocal mới hoàn thành vì nó có sự kiện onchange
@@ -50,34 +50,14 @@ const Header = ({
         const local = localStorage.getItem("locations")
           ? JSON.parse(localStorage.getItem("locations"))
           : [];
-        const localExists = local.find((item) => item === nameLocal); //kiểm tra xem trong bảng gợi ý tồn tại tên thành phố chưa
-
-        if (localExists) {
-          //nếu có phần tử bị trùng
-          const localSHow = local.filter((iteam) => iteam != localExists); //nếu tồn tại thì xóa cái tồn tại đi  rồi đưa cái mới vào cuối mảng vì ở bên inputSuggeest duyệt từ đầu đến cuối
-          if (localSHow.length > 4) {
-            localSHow.shift();
-          }
-          localStorage.setItem(
-            "locations",
-            JSON.stringify([...localSHow, nameLocal])
-          );
-        } else {
-          //nếu không có phần tử bị trùng
-
-          if (local.length > 4) {
-            local.shift();
-          }
-          localStorage.setItem(
-            "locations",
-            JSON.stringify([...local, nameLocal])
-          );
-        }
+          handle_input(local,nameLocal)// sử lí dữ liệu khi nhập , giả sử như bị trùng tên khi nhập  chả hạn 
+  
       }
     } catch (err) {
       // catches errors both in fetch and response.json
       console.log(`lỗi rồi`);
-      alert(err);
+      // alert(err);
+      alert('Có vẻ như tên địa điểm bạn nhập bị sai ')
     }
   };
 
@@ -87,7 +67,7 @@ const Header = ({
         `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=7929f327fc4a780215bc2a5b14f3fe24&units=${unit}&lang=vi`
       );
       const hourForecast = await hourForecastRes.json();
-      setHourlyWeather(hourForecast);
+      hourForecast && setHourlyWeather(hourForecast);
     } catch {
       alert(
         "Oops! Something went wrong with the forecast. Please try again later."
@@ -95,7 +75,7 @@ const Header = ({
     }
   };
   const searchWeather = (e) => {
-    apiFetch();
+     lat && lon && apiFetch();
     setnameLocal("");
   };
   return (
@@ -116,6 +96,8 @@ const Header = ({
           nameLocal={nameLocal}
           apiFetch={apiFetch}
           inforWeather={inforWeather}
+          lat={lat}
+          lon = {lon}
         />
         {/* search đia điểm , và các địa điểm sẽ đc lưu vào local */}
         <div className="headSearch_icon">

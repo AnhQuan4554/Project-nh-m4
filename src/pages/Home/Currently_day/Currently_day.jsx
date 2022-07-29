@@ -8,13 +8,22 @@ import {
   S_contentCurrently,
 } from "./Currently_CSS";
 const Currently_day = ({ inforWeather }) => {
-  const temp = inforWeather && inforWeather.main && Number(inforWeather.main.temp).toFixed(0);
+  const temp =
+    inforWeather &&
+    inforWeather.main &&
+    Number(inforWeather.main.temp).toFixed(0);
   const tempMin =
-    inforWeather && inforWeather.main && Number(inforWeather.main.temp_min).toFixed(0);
+    inforWeather &&
+    inforWeather.main &&
+    Number(inforWeather.main.temp_min).toFixed(0);
   const tempMax =
-    inforWeather && inforWeather.main && Number(inforWeather.main.temp_max).toFixed(0);
+    inforWeather &&
+    inforWeather.main &&
+    Number(inforWeather.main.temp_max).toFixed(0);
   const icon =
     inforWeather && inforWeather.main && inforWeather.weather[0].icon;
+
+  // nếu không có dữ liệu thì return về cái kahcs
   if (!temp && !tempMin && !tempMax && !icon) return <h1>NO DATA</h1>;
   return (
     <S_container>

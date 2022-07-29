@@ -1,10 +1,10 @@
 import React, { useState ,useEffect} from "react";
 import Input_suggest from "./Input_suggest";
 import { suggest_list } from "./Header_CSS";
-const Input_search = ({ setnameLocal, nameLocal, apiFetch, inforWeather }) => {
+const Input_search = ({ setnameLocal, nameLocal, apiFetch,lat,lon }) => {
   const keyEnter = (key) => {
     if (key === "Enter") {
-      apiFetch();
+   apiFetch();
       setnameLocal("");
     }
   };
