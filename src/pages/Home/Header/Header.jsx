@@ -110,6 +110,7 @@ const Header = ({
           <div className="signIn">
             <Link to="Login">SIGN IN</Link> {/* chỗ này để điền link */}
           </div>
+          <span>|</span>
           <div className="signUp">
             <Link to="Signup">SIGN UP</Link> {/* chỗ này để điền link */}
           </div>

@@ -52,7 +52,7 @@ const Currently_day = ({ inforWeather }) => {
                 <span>
                   {" "}
                   {inforWeather && tempMin}{" "}
-                  <TbTemperatureCelsius style={{ color: "#fff" }} />{" "}
+                  <TbTemperatureCelsius style={{ color: "#0ce016" }} />{" "}
                 </span>
               </p>
               <p className="tempMax">

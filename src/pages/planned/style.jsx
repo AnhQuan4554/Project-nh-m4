@@ -1,10 +1,26 @@
 import styled from "styled-components";
 
 export const SPlanned = styled.div`
-margin-top: -230px;
-height: 100vh;
+width: 350px;
+height: 70vh;
 display: flex;
 justify-content: center;
+display: none;
+animation: show 0.3s;
+&.show{
+    display: block;
+    
+}
+@keyframes show {
+    from{
+        margin-top: 200px;
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+        /* margin-top: 0; */
+    }
+}
 .header{
    
    position: absolute;
@@ -89,3 +105,15 @@ justify-content: center;
     }
 }
 `;
+export const Sbutton_addSchedule = styled.button`
+   position: absolute;
+    bottom: 0;
+    background-color: #00b4fe;
+    padding: 10px;
+    border-radius: 20px;
+    font-size: 15px;
+    color: #fff;
+    cursor: pointer;
+    margin-bottom: 5px;
+    left: 4px;
+`

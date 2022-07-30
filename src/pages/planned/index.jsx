@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { SPlanned } from './style'
 import { AiOutlineClockCircle } from 'react-icons/ai'
 import Header from '../../components/headerTodo'
-
+import {Sbutton_addSchedule} from"./style"
 const Planned = () => {
     const [todos, setTodos] = useState([])
     const [day, setDay] = useState("")
@@ -14,12 +14,17 @@ const Planned = () => {
 
 
     }
-
+    const handleClick_addSchedule = ()=>{
+        const schedule = document.querySelector('.wrapSchedule');
+        schedule.classList.remove('show')
+       const formAdd_todo =  document.querySelector('.formAdd_todo')
+        formAdd_todo.classList.add('show')
+    }
 
     return (
-        <SPlanned>
+        <SPlanned className='wrapSchedule'>
 
-            <div className='container'>
+            <div className='container '>
                 <Header className="header" getToDosValue={getToDosValue} day={day} />
                 <div className='content-container'>
                     {todos.length === 0 ?
@@ -44,11 +49,8 @@ const Planned = () => {
                             )
                         })}
 
-
-
-
-
                 </div>
+                <Sbutton_addSchedule onClick={handleClick_addSchedule}>Thêm nhiệm vụ</Sbutton_addSchedule>
             </div>
         </SPlanned>
     )

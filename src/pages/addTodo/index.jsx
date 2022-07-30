@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { SAddTodo } from "./style";
 import Input from "../../components/inputTodo";
-import Button from "../../components/buttonTodo";
+import Button_todo from "../../components/buttonTodo";
 
 const AddToDo = () => {
+  const [isShow_schedule, setIsShow_schedule] = useState(false)
   const inittialState = {
     date: "",
     day: "",
@@ -23,9 +24,19 @@ const AddToDo = () => {
 
     setAddToDo(inittialState);
   };
+  /////////
+  const handleClick_show  = ()=>{
+    const formAdd_todo =  document.querySelector('.formAdd_todo')
+     let hasClassShow = formAdd_todo.classList.contains("show");
+     hasClassShow && formAdd_todo.classList.remove('show')
+     
+     const schedule = document.querySelector('.wrapSchedule');
+     schedule.classList.add('show')
 
+     
+ }
   return (
-    <SAddTodo>
+    <SAddTodo className=" formAdd_todo show">
       <form onSubmit={handleSubmit}>
         <h1>New Event</h1>
         <Input
@@ -55,8 +66,8 @@ const AddToDo = () => {
           placeholder="Time"
           onChange={(e) => setAddToDo({ ...addToDo, time: e.target.value })}
         />
-
-        <Button text="ADD TO SCHEDULE" />
+        <Button_todo text="ADD TO SCHEDULE" />
+        <Button_todo handleClick_show={handleClick_show}  text="SHOW SCHEDULE" />
       </form>
     </SAddTodo>
   );

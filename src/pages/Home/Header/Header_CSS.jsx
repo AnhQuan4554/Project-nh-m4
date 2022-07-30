@@ -82,6 +82,15 @@ export const S_head_User = styled.div`
     color: #fff;
     text-decoration: none;
     display: block;
+    transition: all 0.3s;
+    &:hover{
+      color: #e74c3c;
+    }
+  }
+  span{
+    transform: scale(1.4);
+    color: #fff;
+
   }
 `;
 

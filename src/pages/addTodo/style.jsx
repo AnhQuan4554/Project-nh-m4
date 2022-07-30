@@ -1,16 +1,12 @@
 import styled from "styled-components";
 
 export const SAddTodo = styled.div`
-display: flex;
+display: none;
 justify-content: center;
-/* margin-top: -150px; */
-height: 100vh;
-Button{
-    margin-top: 40px;
-    &:hover{
-        transition: 0.5s;
-        color: #e7a8a8;
-    }
+width: 350px;
+
+&.show{
+    display: flex;
 }
 Input{
     margin-left: 24px;

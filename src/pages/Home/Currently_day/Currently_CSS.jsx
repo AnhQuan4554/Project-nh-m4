@@ -5,7 +5,7 @@ export const S_container = styled.div`
 `;
 export const S_headerCurrently = styled.div`
   padding: 10px 16px;
-  background-color: #286661;
+  background-color: #3e394b;
   width: 800px;
   height: 170 px;
   /* margin-left: 165px; */
@@ -47,6 +47,7 @@ export const S_contentCurrently = styled.div`
       }
     }
     .content_bonus {
+      color: #ccc;
     }
   }
   .header_img {
