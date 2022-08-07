@@ -54,10 +54,14 @@ const Login = ({ checkLogin, setCheckLogin, setUser }) => {
           })
           .catch((error) => {
             console.log(error.message);
+          
+       //frjij
+
           });
       })
       .catch((error) => {
         toast.error(error.message);
+
       });
   };
   const actionCodeSettings = {

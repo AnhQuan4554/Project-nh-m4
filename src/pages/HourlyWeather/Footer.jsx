@@ -22,4 +22,5 @@ const S_HourlyWeatherFooter = styled.div`
   background-color: #fff;
   border-bottom-left-radius: 6px;
   border-bottom-right-radius: 6px;
+  
 `;

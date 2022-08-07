@@ -70,7 +70,16 @@ const S_HourlyWeatherItemDetails = styled.div`
   padding: 15px;
   border: 1px solid #dedede;
   border-radius: 6px;
-
+  animation: show .3s;
+  @keyframes show {
+    from{
+      opacity: 0;
+      margin-top: -10px;
+    }
+    to{
+      opacity: 1;
+    }
+  }
   .top__content {
     padding-bottom: 14px;
     border-bottom: 1px solid #dedede;
@@ -81,4 +90,6 @@ const S_HourlyWeatherItemDetails = styled.div`
     display: flex;
     padding-top: 14px;
   }
+ 
 `;
+

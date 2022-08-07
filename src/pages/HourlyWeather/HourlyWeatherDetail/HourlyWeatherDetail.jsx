@@ -26,7 +26,6 @@ export default HourlyWeatherDetail;
 const S_HourlyWeatherDetail = styled.span`
   display: flex;
   flex: 1;
-
   .icon {
     color: #1b4de4;
   }

@@ -9,7 +9,7 @@ const HourlyWeatherList = ({ time, listInfo }) => {
   // console.log(listInfo, "ở hour list");
 
   return (
-    <S_HourlyWeatherList>
+    <S_HourlyWeatherList >
       <h2 className="day">{`${time.day}, ngày ${time.date} tháng ${time.month}`}</h2>
       {listInfo &&
         listInfo.map((info, index) => {
@@ -41,7 +41,7 @@ const S_HourlyWeatherList = styled.ul`
   width: 100%;
   background-color: #fff;
   border-bottom: 1px solid #dedede;
-
+  
   .day {
     padding: 10px 26px;
     border-top: 1px solid #dedede;

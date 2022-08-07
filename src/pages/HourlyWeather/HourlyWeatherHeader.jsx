@@ -20,7 +20,7 @@ const S_HourlyWeatherHeader = styled.div`
   background-color: #fff;
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
-
+ 
   .title {
     margin-bottom: 6px;
     display: flex;

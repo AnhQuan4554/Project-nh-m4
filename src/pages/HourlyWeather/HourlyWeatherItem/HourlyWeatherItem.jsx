@@ -55,4 +55,5 @@ export default HourlyWeatherItem;
 
 const S_HourlyWeatherItem = styled.li`
   border-top: 1px solid #dedede;
+
 `;

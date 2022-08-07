@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const S_container = styled.div`
   width: 100%;
+
 `;
 export const S_headerCurrently = styled.div`
   padding: 10px 16px;

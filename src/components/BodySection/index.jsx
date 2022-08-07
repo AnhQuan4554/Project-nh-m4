@@ -3,7 +3,7 @@ import styled from "styled-components";
 const BodySection = ({ rightContent = [], mainContent }) => {
   return (
     <S_BodySection>
-      <div className="main__content">
+      <div className="main__content ">
         {mainContent.map((item, index) => (
           <div key={index} className="wrap_main__content ">
             {item}
@@ -30,10 +30,18 @@ const S_BodySection = styled.section`
   margin-top: 15px;
   display: flex;
   justify-content: center;
+  .wrap_main__content{
+    /* position: absolute;
+    left: 50%;
+    transform: translateX(-50%); */
 
+  }
   .main__content {
     width: 800px;
     border-radius: 6px;
+    /* position: absolute;
+    left: 50%;
+    transform: translateX(-50%); */
   }
 
   .right__content {
