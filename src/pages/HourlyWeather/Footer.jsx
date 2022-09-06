@@ -8,7 +8,7 @@ const HourlyWeatherFooter = () => {
   return (
     <S_HourlyWeatherFooter>
       <Link to="/Index">
-        <Button text="Thời tiết 5 ngày tới" />
+        <Button text="Thời tiết 7 ngày tới" />
       </Link>
     </S_HourlyWeatherFooter>
   );

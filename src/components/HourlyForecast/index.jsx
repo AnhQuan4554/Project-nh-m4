@@ -14,28 +14,6 @@ const HourlyForecast = ({ hourlyWeather }) => {
   const nowHour = now.getHours();
   const nowDate = now.getDate();
 
-  // const nowHour = 15;
-
-  // Lấy tọa độ địa điểm
-
-  // Call API 3 giờ
-  // const lat = inforWeather && inforWeather.coord && inforWeather.coord.lat;
-  // const lon = inforWeather && inforWeather.coord && inforWeather.coord.lon;
-
-  // const getHourForecast = async () => {
-  //   try {
-  //     const hourForecastRes = await fetch(
-  //       `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=7929f327fc4a780215bc2a5b14f3fe24&units=${unit}&lang=vi`
-  //     );
-  //     const hourForecast = await hourForecastRes.json();
-  //     setHourlyWeather(hourForecast);
-  //     // console.log(hourForecast);
-  //   } catch {
-  //     alert(
-  //       "Oops! Something went wrong with the forecast. Please try again later."
-  //     );
-  //   }
-  // };
 
   // Xử lý dữ liệu
   const handlerForecastData = () => {

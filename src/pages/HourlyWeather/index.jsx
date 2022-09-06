@@ -98,18 +98,18 @@ const HourlyWeather = ({ inforWeather, hourlyWeather, checkLogin }) => {
   return (
     <>
       {checkLogin ? (
-        <BodySection  // thời tiết 3 giờ liên tiếp
-          mainContent={[
-            <Wrap_hourlyWeather className="oks">
-              <HourlyWeatherHeader
-                currentLocation={inforWeather && inforWeather.name}
-                accessTime={`${today.hour}:${today.minute}`}
-              />
-              <HourlyWeatherList listInfo={listInfo} time={time} />
-              <HourlyWeatherFooter />
-            </Wrap_hourlyWeather>
-          ]}
+
+        <Wrap_hourlyWeather >
+          <div className="hourlyWeather">
+
+        <HourlyWeatherHeader
+          currentLocation={inforWeather && inforWeather.name}
+          accessTime={`${today.hour}:${today.minute}`}
         />
+        <HourlyWeatherList listInfo={listInfo} time={time} />
+        <HourlyWeatherFooter />
+          </div>
+      </Wrap_hourlyWeather>
       ) : (
         <div
           style={{
@@ -130,9 +130,16 @@ const HourlyWeather = ({ inforWeather, hourlyWeather, checkLogin }) => {
 
 export default HourlyWeather;
 const Wrap_hourlyWeather = styled.div`
-  /* position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 70%;
-  margin-bottom: 200px; */
+width: 100%;
+display: flex;
+align-items: center;
+justify-content: center;
+
+.hourlyWeather{
+  width: 80%;
+  border: 1px solid #ccc;
+  border-top: none;
+  
+}
+
 `

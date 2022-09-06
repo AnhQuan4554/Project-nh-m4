@@ -88,7 +88,7 @@ export default function CustomizedAccordions({ inforWeather }) {
       console.log(error);
     }
   };
-
+  console.log(api, " api cua 5 ngay");
   const dayOrNight = {
     d: <BsSun />,
     n: <MdNightsStay />,

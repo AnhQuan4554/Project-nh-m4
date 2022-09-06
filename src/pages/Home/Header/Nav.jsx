@@ -17,7 +17,7 @@ const Nav = () => {
           3 giờ
         </NavLink>
         <NavLink className="Navigate_link" activeClassName="active" to="Index">
-          5 ngày
+          7 ngày
         </NavLink>
       </div>
     </S_Navigate>

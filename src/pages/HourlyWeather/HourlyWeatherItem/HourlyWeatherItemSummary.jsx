@@ -61,12 +61,16 @@ export default HourlyWeatherItemSummary;
 const S_HourlyWeatherItemSummary = styled.summary`
   padding: 5px 26px;
   font-size: 15px;
-  outline: ${(props) => {
-    return props.isShow ? "5px auto -webkit-focus-ring-color" : "unset";
-  }};
-  border-radius: 6px;
+  /* outline: ${(props) => {
+    return props.isShow ? "1px auto #ccc" : "unset";
+  }}; */
+  transition: all 0.3s;
+  background-color: ${props=>(
+    props.isShow ? '#7068680d' : '#fff'
+  )};
   display: flex;
   align-items: center;
+  border: none;
   cursor: pointer;
 
   span {

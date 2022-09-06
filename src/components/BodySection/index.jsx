@@ -27,9 +27,18 @@ export default BodySection;
 const S_BodySection = styled.section`
   max-width: 100%;
   min-height: 500px;
-  margin-top: 15px;
+  padding-top: 15px;
+  padding-bottom: 30px;
   display: flex;
   justify-content: center;
+  background: linear-gradient(
+      0deg,
+      #e5dee2,
+      #e5dee2 20%,
+      #aba2b4 60%,
+      #59516e 90%,
+      #59516e
+    );
   .wrap_main__content{
     /* position: absolute;
     left: 50%;

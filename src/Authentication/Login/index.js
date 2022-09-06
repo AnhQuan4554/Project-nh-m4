@@ -61,6 +61,7 @@ const Login = ({ checkLogin, setCheckLogin, setUser }) => {
       })
       .catch((error) => {
         toast.error(error.message);
+        console.log('loi');
 
       });
   };

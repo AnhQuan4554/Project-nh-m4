@@ -74,18 +74,29 @@ const Footer = () => {
 export default Footer;
 
 const S_Footer = styled.footer`
-  background-color: #fff;
-  margin-top: 60px;
 
+  /* background: linear-gradient(
+    0deg,
+    #e5dee2,
+    #e5dee2 20%,
+    #aba2b4 60%,
+    #59516e 90%,
+    #59516e
+  ); */
+  background-color: #fff;
+
+a{
+  color: #000;
+}
   .container {
-    padding: 30px;
+    /* padding: 30px;
     width: 1200px;
-    margin: auto;
+    margin: auto; */
 
     .header {
       display: flex;
       justify-content: space-between;
-
+      padding: 30px 120px 0 120px;
       .social-container {
         font-size: 26px;
 
@@ -120,7 +131,6 @@ const S_Footer = styled.footer`
     }
 
     .body {
-      margin-top: 80px;
 
       .corporate {
         display: flex;
@@ -169,7 +179,7 @@ const S_Footer = styled.footer`
     }
 
     .footer {
-      margin-top: 60px;
+      margin-top: 30px;
       display: flex;
       align-items: center;
       justify-content: center;

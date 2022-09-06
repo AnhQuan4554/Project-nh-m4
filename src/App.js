@@ -8,9 +8,9 @@ import Home from "./pages/Home/index";
 import HourlyWeather from "./pages/HourlyWeather";
 import Login from "./Authentication/Login";
 import Signup from "./Authentication/Signup";
-import Index from "./components/FiveDay_forecast/Index";
+import Index from "./components/SevenDay_forecast/Index";
+import Accordion from "./components/SevenDay_forecast/Accordion";
 import Footer from "./components/Footer";
-
 
 const App = () => {
   const [inforWeather, setInforWeather] = useState(null);
@@ -23,8 +23,8 @@ const App = () => {
     city: "",
     country: "",
   });
-console.log(currentLocation)
-console.log('okokok')
+  console.log(currentLocation);
+  console.log("okokok");
   useEffect(() => {
     if (navigator.geolocation) {
       //check if geolocation is available
@@ -75,7 +75,6 @@ console.log('okokok')
         setCheckLogin={setCheckLogin}
       />
       <Nav />
-      
 
       <Routes>
         <Route
@@ -118,12 +117,20 @@ console.log('okokok')
               checkLogin={checkLogin}
             />
           }
-        /> 
-        
-         <Route path="/Index" element={< Index checkLogin={checkLogin} inforWeather={inforWeather}  />} /> {/*  đây là 5 ngày */}
-    
-        {/* <Route path="/addtodo" element={<AddToDo />} />
-        <Route path="/planned" element={<Planned />} /> */}
+        />
+        <Route
+          path="/Index"
+          element={
+            <Index checkLogin={checkLogin} inforWeather={inforWeather} />
+          }
+        />{" "}
+        {/*  đây là 5 ngày */}
+        <Route
+          path="/Accordion"
+          element={
+            <Accordion checkLogin={checkLogin} inforWeather={inforWeather} />
+          }
+        />
       </Routes>
       <Footer />
     </div>
